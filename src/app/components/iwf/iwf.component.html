@@ -1,1 +1,85 @@
-<p>iwf works!</p>
+<main class>
+  <h1 class="text-center m-6 font-bold text-xl md:text-4xl text-orange-500">
+    ¿QUIÉNES SOMOS?
+  </h1>
+  <div class="text-base max-w-prose mx-auto px-12 mb-12 lg:ml-0 lg:mr-auto">
+    <p class="text-lg leading-7 text-gray-700 mb-5">
+      En el año 2004, International Women´s Forum estableció su base en nuestro
+      país. Mujeres de distintos ámbitos -ciencias, economía, política,
+      academia, empresas, periodismo, cultura, entre otros-, reconocidas
+      profesionales y protagonistas en su acción transformadora en la sociedad,
+      combinaron su talento y trabajo por el bien común para iniciar la
+      trayectoria de IWF Argentina.
+    </p>
+    <p class="text-lg leading-7 text-gray-700 mb-5">
+      En línea con los valores centrales del IWF, su misión es empoderar el rol
+      de la mujer en nuestro país y ponen en relevancia el aprender, compartir y
+      respetar las diferentes ideas, creencias y experiencias de las mujeres que
+      integran la red de IWF Argentina.
+    </p>
+    <p class="text-lg leading-7 text-gray-700 mb-5">
+      El programa anual de sus actividades incluye la realización de
+      conferencias y jornadas abiertas a la comunidad, que abordan temáticas en
+      línea con los objetivos del Foro. Durante más de 15 años, IWF Argentina ha
+      realizado numerosos eventos, con importante participación y repercusión en
+      medios de comunicación.
+    </p>
+  </div>
+  <div class="text-base max-w-prose mx-auto px-12 mb-12 lg:ml-auto lg:mr-0">
+    <p class="text-lg leading-7 text-gray-700 mb-5">
+      Junto a estas actividades, IWF Argentina lleva a cabo un ciclo de
+      desayunos mensuales para las socias y vinculadas que cuenta con invitadas
+      especiales y participación de las mismas socias para compartir temas de
+      actualidad, a fin de generar un ámbito de intercambio y networking.
+    </p>
+    <p class="text-lg leading-7 text-gray-700 mb-5">
+      Entre las figuras destacadas han participado María Angélica Gelli, abogada
+      especialista en Sociología Jurídica, Nelly Minyerski, abogada
+      especializada en Derecho de Familia; la embajadora de Estados Unidos Vilma
+      Martínez, la embajadora de Israel, Dorit Shavit, la galerista experta en
+      arte contemporáneo, Orly Benzacar y las empresarias Susana Balvo y Andrea
+      Grobocopatel, líderes del W20, capítulo del G20, en la reunión
+      internacional del 2018, con sede en Argentina, en cuyos debates
+      participaron varias socias.
+    </p>
+    <p class="text-lg leading-7 text-gray-700 mb-5">
+      A partir de 2020, comenzó el “Ciclo de Conversatorios” como parte del
+      programa anual de actividades, dedicado a la presentación de proyectos
+      profesionales de las socias e invitadas. Participaron Susana Malcorra, ex
+      Canciller de la Argentina, Marta Antonelli, bióloga e investigadora
+      principal del CONICET, Silvia Fesquet y Silvia Naishtat, pro-secretaria
+      general de redacción y editora de economía de diario Clarín
+      respectivamente; Silvia Fajre y Sofia Weil, especialistas en proyectos de
+      patrimonio y bienestar cultural.
+    </p>
+  </div>
+
+  <h1 class="text-center m-6 font-bold text-xl md:text-4xl text-orange-500">
+    AUTORIDADES
+  </h1>
+
+  <section class="flex flex-wrap justify-center gap-6 p-4">
+    @for (autoridad of autoridades; track $index) {
+    <div
+      class="bg-white border-l-4 border-orange-400 shadow-lg rounded-lg p-6 transition duration-300 hover:shadow-2xl hover:border-orange-600 w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.333%-2rem)] lg:w-[calc(25%-1.5rem)]"
+    >
+      <h6 class="text-lg font-bold mb-1 font-serif">{{ autoridad.name }}</h6>
+      <p class="text-gray-600">{{ autoridad.title }}</p>
+    </div>
+    }
+  </section>
+  <h1 class="text-center m-6 font-bold text-xl md:text-4xl text-orange-500">
+    SOCIAS
+  </h1>
+
+  <section class="flex flex-wrap justify-center gap-6 p-4">
+    @for (socia of socias; track $index) {
+    <div
+      class="bg-white border-l-4 border-orange-400 shadow-lg rounded-lg p-6 transition duration-300 hover:shadow-2xl hover:border-orange-600 w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.333%-2rem)] lg:w-[calc(25%-1.5rem)]"
+    >
+      <h6 class="text-lg font-bold mb-1 font-serif">{{ socia.name }}</h6>
+      <p class="text-gray-600">{{ socia.title }}</p>
+    </div>
+    }
+  </section>
+</main>
