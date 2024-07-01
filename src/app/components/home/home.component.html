@@ -3,22 +3,46 @@
     class="min-h-[calc(100vh-4rem)] p-4 flex flex-col items-center justify-around space-y-3 bg-orange-100/30"
   >
     <div class="text-center space-y-5">
-      <h1 class="text-3xl md:text-5xl text-orange-500">
+      <h1 class="text-3xl md:text-5xl font-semibold text-orange-500">
         International Women's Forum
       </h1>
-      <p class="font-serif text-lg md:text-2xl tracking-wider">
+      <p class="text-lg md:text-xl font-light">
         Potenciamos el
-        <strong class="underline">liderazgo femenino</strong> a nivel mundial y
-        local.
+        <strong>liderazgo femenino</strong> a nivel mundial y local.
       </p>
     </div>
     <div class="relative flex flex-wrap justify-center gap-2">
-      <img class="w-24 h-24 md:w-32 md:h-32" src="" alt="1" />
-      <img class="w-24 h-24 md:w-32 md:h-32" src="" alt="2" />
-      <img class="w-24 h-24 md:w-32 md:h-32" src="" alt="3" />
-      <img class="w-24 h-24 md:w-32 md:h-32" src="" alt="4" />
+      <div class="flex-1">
+        <img
+          class="w-full h-auto rounded-full"
+          src="https://placehold.co/400x400/orange/white"
+          alt="1"
+        />
+      </div>
+      <div class="flex-1">
+        <img
+          class="w-full h-auto rounded-full"
+          src="https://placehold.co/400x400/orange/white"
+          alt="2"
+        />
+      </div>
+      <div class="flex-1">
+        <img
+          class="w-full h-auto rounded-full"
+          src="https://placehold.co/400x400/orange/white"
+          alt="3"
+        />
+      </div>
+      <div class="flex-1">
+        <img
+          class="w-full h-auto rounded-full"
+          src="https://placehold.co/400x400/orange/white"
+          alt="4"
+        />
+      </div>
     </div>
-    <p class="text-lg md:text-3xl">
+
+    <p class="text-lg md:text-3xl font-semibold">
       +7000 líderes | 35 países | 76 foros locales
     </p>
   </section>
@@ -26,12 +50,10 @@
   <section
     class="min-h-screen md:h-auto p-4 flex flex-col items-center justify-around space-y-3"
   >
-    <h2 class="text-2xl md:text-3xl border-b-2 border-orange-500">
+    <h2 class="text-2xl md:text-3xl font-semibold border-b-2 border-orange-500">
       NUESTRA MISIÓN
     </h2>
-    <p
-      class="text-center font-serif text-lg tracking-wider md:text-3xl md:w-2/3"
-    >
+    <p class="text-center text-lg md:text-3xl md:w-2/3">
       La misión del IWF es fomentar las características de liderazgo en las
       mujeres y proveer un lugar en donde se intercambian experiencias de
       significativa importancia para las socias en conferencias y diferentes
@@ -45,10 +67,12 @@
   </section>
   <section class="flex flex-col justify-around items-center space-y-3">
     <img class="max-w-full h-auto" src="/iwforum2.png" alt="IWForum" />
-    <h3 class="pt-6 text-2xl md:text-3xl border-b-2 border-orange-500">
+    <h3
+      class="pt-6 text-2xl md:text-3xl border-b-2 font-semibold border-orange-500"
+    >
       NUESTROS VALORES
     </h3>
-    <ul class="font-serif py-5 px-12 space-y-3 list-disc text-lg md:text-xl">
+    <ul class="py-5 px-12 space-y-3 list-disc text-lg md:text-2xl">
       <li>
         Enfatizar el rol del <strong>liderazgo</strong> femenino (pasado,
         presente y futuro).
@@ -66,7 +90,7 @@
     </ul>
     <button
       routerLink="/iwf"
-      class="bg-orange-500 text-white px-3 py-2 rounded-md text-sm font-medium"
+      class="bg-orange-500 text-white px-3 py-2 md:text-lg md:tracking-wider rounded-md font-medium"
     >
       Conocer más
     </button>
