@@ -4,6 +4,8 @@ import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ActividadesComponent } from './components/actividades/actividades.component';
 import { TrayectoriaComponent } from './components/trayectoria/trayectoria.component';
 import { IwfComponent } from './components/iwf/iwf.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -11,4 +13,9 @@ export const routes: Routes = [
   { path: 'iwf', component: IwfComponent },
   { path: 'actividades', component: ActividadesComponent },
   { path: 'trayectoria', component: TrayectoriaComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
+  { path: 'login', component: LoginComponent },
 ];
