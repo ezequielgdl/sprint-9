@@ -6,6 +6,7 @@ import { TrayectoriaComponent } from './components/trayectoria/trayectoria.compo
 import { IwfComponent } from './components/iwf/iwf.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
   },
   { path: 'login', component: LoginComponent },
 ];
