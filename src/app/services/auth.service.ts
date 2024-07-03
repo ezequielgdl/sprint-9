@@ -23,7 +23,6 @@ export class AuthService {
         response.error &&
         response.error.message === 'Auth session missing!'
       ) {
-        // Handle session missing error gracefully
         console.log('Auth session missing or expired.');
         return null;
       }
@@ -31,6 +30,34 @@ export class AuthService {
     } catch (error) {
       console.error('Error checking login status:', error);
       return null;
+    }
+  }
+
+  async login(email: string, password: string): Promise<User | null> {
+    try {
+      console.log('Attempting login');
+      const { data, error } = await this.supabaseClient.auth.signInWithPassword(
+        { email, password }
+      );
+      if (error) {
+        console.error('Error logging in:', error.message);
+        return null;
+      }
+      return data.user ?? null;
+    } catch (error) {
+      console.error('Error logging in:', error);
+      return null;
+    }
+  }
+
+  async logout(): Promise<void> {
+    try {
+      const { error } = await this.supabaseClient.auth.signOut();
+      if (error) {
+        console.error('Error logging out:', error.message);
+      }
+    } catch (error) {
+      console.error('Error logging out:', error);
     }
   }
 }
