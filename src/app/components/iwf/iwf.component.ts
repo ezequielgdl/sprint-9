@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Member } from '../../interface';
+import { SupabaseService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-iwf',
@@ -9,26 +10,11 @@ import { Member } from '../../interface';
   styleUrl: './iwf.component.css',
 })
 export class IwfComponent {
-  autoridades: Member[] = [
-    {
-      name: 'Graciela Romer',
-      title: 'Vocal Suplente',
-    },
-    {
-      name: 'Silvia Fesquest',
-      title: 'Presidenta',
-    },
-  ];
+  members: any[] = [];
 
-  socias: Member[] = [
-    {
-      name: 'Marta Cristina Antonelli',
-      title:
-        'Investigadora principal - Instituto de Biología Celular y Neurociencias - Facultad de Medicina UBA - CONICET',
-    },
-    {
-      name: 'Claudia Alvarez Arguello',
-      title: 'Vicepresidente y CEO Alvarez Arguelles Hoteles',
-    },
-  ];
+  constructor(private supabaseService: SupabaseService) {}
+
+  async ngOnInit() {
+    this.members = await this.supabaseService.getMembers();
+  }
 }
