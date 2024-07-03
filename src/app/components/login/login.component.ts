@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { SupabaseService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
+    private supabaseService: SupabaseService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.error = null;
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      const user = await this.authService.login(email, password);
+      const user = await this.supabaseService.login(email, password);
       if (user) {
         this.router.navigate(['/dashboard']);
       } else {
