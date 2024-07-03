@@ -24,14 +24,25 @@ export class SupabaseService {
     return data;
   }
 
-  async getEvents() {
-    const { data, error } = await this.supabaseClient.from('events').select();
+  async getEvents(category: string) {
+    const { data, error } = await this.supabaseClient
+      .from('events')
+      .select()
+      .eq('category', category);
 
     if (error) {
       console.error('Error fetching events', error.message);
       return [];
     }
     return data;
+  }
+
+  async delete(table: string, id: number) {
+    const response = await this.supabaseClient
+      .from(table)
+      .delete()
+      .eq('id', id);
+    return response;
   }
 
   async isLoggedIn(): Promise<User | null> {

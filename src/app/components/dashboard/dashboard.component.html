@@ -2,6 +2,32 @@
   <h1 class="text-center md:text-xl font-bold p-4 text-orange-500">
     Panel de Control
   </h1>
+  <div>
+    <button
+      class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
+      (click)="onStatusChange('members')"
+    >
+      Miembros
+    </button>
+    <button
+      class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
+      (click)="onStatusChange('actividades')"
+    >
+      Actividades
+    </button>
+    <button
+      class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
+      (click)="onStatusChange('noticias')"
+    >
+      Noticias
+    </button>
+    <button
+      class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
+      (click)="onStatusChange('trayectoria')"
+    >
+      Trayectoria
+    </button>
+  </div>
   <button
     class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
     (click)="onSignOut()"
@@ -9,62 +35,17 @@
     Cerrar Sesión
   </button>
 </div>
-<div class="container mx-auto">
-  <h2 class="text-2xl font-bold mb-4">Miembros</h2>
-  <div class="overflow-x-auto">
-    <table class="min-w-full bg-white border-gray-200 shadow">
-      <thead class="bg-gray-100">
-        <tr>
-          <th
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Nombre
-          </th>
-          <th
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Título
-          </th>
-          <th
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Avatar
-          </th>
-          <th
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Categoría
-          </th>
-          <th
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Modificar
-          </th>
-          <th
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Eliminar
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (member of members; track $index) {
-        <tr class="border-t border-gray-200">
-          <td class="px-6 py-4 whitespace-nowrap">{{ member.name }}</td>
-          <td class="px-6 py-4 whitespace-nowrap">{{ member.title }}</td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            @if (member.avatar) {<img
-              [src]="member.avatar"
-              alt="Avatar"
-              class="h-10 w-10 rounded-full"
-            />}
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">{{ member.role }}</td>
-          <td class="px-6 py-4 whitespace-nowrap">EDIT</td>
-          <td class="px-6 py-4 whitespace-nowrap">DELETE</td>
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-</div>
+@if (status === 'members') {<app-members [members]="members"></app-members>} @if
+(status === 'trayectoria') {<app-events-db
+  [category]="status"
+  [events]="trayectoria"
+></app-events-db
+>} @if (status === 'noticias') {<app-events-db
+  [events]="noticias"
+  [category]="status"
+></app-events-db
+>} @if (status === 'actividades') {<app-events-db
+  [events]="actividades"
+  [category]="status"
+></app-events-db
+>}

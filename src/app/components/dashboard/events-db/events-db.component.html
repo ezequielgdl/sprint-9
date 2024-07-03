@@ -1,0 +1,49 @@
+<div class="container mx-auto">
+  <h2 class="text-2xl font-bold mb-4">Miembros</h2>
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border-gray-200 shadow">
+      <thead class="bg-gray-100">
+        <tr>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Titulo
+          </th>
+
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Modificar
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Eliminar
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (event of events; track $index) {
+        <tr class="border-t border-gray-200">
+          <td class="px-6 py-4 whitespace-nowrap">{{ event.title }}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <button
+              class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
+            >
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <button
+              class="bg-orange-800 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-900 disabled:opacity-50"
+              (click)="onDelete('events', event.id)"
+            >
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
