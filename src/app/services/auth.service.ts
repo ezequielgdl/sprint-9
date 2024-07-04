@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { SupabaseClient, User, createClient } from '@supabase/supabase-js';
 import { environment } from '../../environments/environment';
+import { Member } from '../interface';
 
 @Injectable({ providedIn: 'root' })
 export class SupabaseService {
@@ -43,6 +44,29 @@ export class SupabaseService {
       .delete()
       .eq('id', id);
     return response;
+  }
+
+  async createMember(member: Member) {
+    const { data, error } = await this.supabaseClient
+      .from('members')
+      .insert(member)
+      .select();
+    if (error) {
+      console.error('Error', error);
+      return error.message;
+    }
+    return data;
+  }
+
+  async createEvent(event: Event) {
+    const { data, error } = await this.supabaseClient
+      .from('events')
+      .insert(event);
+    if (error) {
+      console.error('Error', error);
+      return error.message;
+    }
+    return data;
   }
 
   async isLoggedIn(): Promise<User | null> {

@@ -9,7 +9,11 @@
           >
             Titulo
           </th>
-
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Año
+          </th>
           <th
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
@@ -26,6 +30,7 @@
         @for (event of events; track $index) {
         <tr class="border-t border-gray-200">
           <td class="px-6 py-4 whitespace-nowrap">{{ event.title }}</td>
+          <td class="px-6 py-4 whitespace-nowrap">{{ event.year }}</td>
           <td class="px-6 py-4 whitespace-nowrap">
             <button
               class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"

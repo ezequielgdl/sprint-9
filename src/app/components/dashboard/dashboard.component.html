@@ -1,40 +1,64 @@
-<div class="flex justify-between">
-  <h1 class="text-center md:text-xl font-bold p-4 text-orange-500">
+<div class="flex justify-between items-center p-4 mb-12 bg-white shadow-md">
+  <h1 class="text-center md:text-xl font-bold text-orange-500">
     Panel de Control
   </h1>
-  <div>
+  <div class="flex space-x-4">
     <button
-      class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
+      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      [ngClass]="{
+        'font-semibold underline text-orange-600': status === 'members'
+      }"
       (click)="onStatusChange('members')"
     >
       Miembros
     </button>
     <button
-      class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
+      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      [ngClass]="{
+        'font-semibold underline text-orange-600': status === 'actividades'
+      }"
       (click)="onStatusChange('actividades')"
     >
       Actividades
     </button>
     <button
-      class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
+      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      [ngClass]="{
+        'font-semibold underline text-orange-600': status === 'noticias'
+      }"
       (click)="onStatusChange('noticias')"
     >
       Noticias
     </button>
     <button
-      class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
+      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      [ngClass]="{
+        'font-semibold underline text-orange-600': status === 'trayectoria'
+      }"
       (click)="onStatusChange('trayectoria')"
     >
       Trayectoria
     </button>
   </div>
-  <button
-    class="bg-orange-500 text-sm p-4 m-4 text-white py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
-    (click)="onSignOut()"
-  >
-    Cerrar Sesión
-  </button>
+  <div class="flex space-x-4">
+    <button
+      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      [ngClass]="{
+        'font-semibold underline text-orange-600': status === 'create'
+      }"
+      (click)="onStatusChange('create')"
+    >
+      Crear
+    </button>
+    <button
+      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      (click)="onSignOut()"
+    >
+      Cerrar Sesión
+    </button>
+  </div>
 </div>
+
 @if (status === 'members') {<app-members [members]="members"></app-members>} @if
 (status === 'trayectoria') {<app-events-db
   [category]="status"
@@ -48,4 +72,8 @@
   [events]="actividades"
   [category]="status"
 ></app-events-db
+>} @if (status === 'create') {<app-create
+  (memberCreated)="onMemberCreated()"
+  (eventCreated)="onEventCreated()"
+></app-create>
 >}

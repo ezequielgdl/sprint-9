@@ -1,0 +1,186 @@
+<form
+  action=""
+  [formGroup]="memberForm"
+  (ngSubmit)="onSubmitMember()"
+  class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md space-y-4"
+>
+  <h2 class="text-2xl font-bold mb-4">MIEMBROS</h2>
+  <div class="flex flex-col">
+    <label for="name" class="mb-2 font-semibold text-gray-700">Nombre:</label>
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    />
+    @if(memberForm.get('name')?.invalid && (memberForm.get('name')?.dirty ||
+    memberForm.get('name')?.touched)){
+    <div class="text-red-600 text-sm">Nombre es requerido.</div>
+    }
+  </div>
+  <div class="flex flex-col">
+    <label for="title" class="mb-2 font-semibold text-gray-700">Titulo:</label>
+    <textarea
+      id="title"
+      type="text"
+      rows="2"
+      formControlName="title"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    ></textarea>
+    @if(memberForm.get('title')?.invalid && (memberForm.get('title')?.dirty ||
+    memberForm.get('title')?.touched)){
+    <div class="text-red-600 text-sm">Título es requerido.</div>
+    }
+  </div>
+  <div class="flex flex-col">
+    <label for="avatar" class="mb-2 font-semibold text-gray-700">Avatar:</label>
+    <input
+      id="avatar"
+      type="text"
+      formControlName="avatar"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    />
+  </div>
+  <div class="flex flex-col">
+    <label for="role" class="mb-2 font-semibold text-gray-700"
+      >Categoría:</label
+    >
+    <select
+      id="role"
+      formControlName="role"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    >
+      <option value="socias">Socias</option>
+      <option value="autoridades">Autoridades</option>
+    </select>
+    @if(memberForm.get('role')?.invalid && (memberForm.get('role')?.dirty ||
+    memberForm.get('role')?.touched)){
+    <div class="text-red-600 text-sm">Categoría es requerida.</div>
+    }
+  </div>
+  <div class="flex justify-end">
+    <button
+      type="submit"
+      class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
+    >
+      Crear Miembro
+    </button>
+  </div>
+</form>
+
+<form
+  action=""
+  [formGroup]="eventForm"
+  (ngSubmit)="onSubmitEvent()"
+  class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md space-y-4"
+>
+  <h2 class="text-2xl font-bold mb-4">EVENTOS</h2>
+  <div class="flex flex-col">
+    <label for="category" class="mb-2 font-semibold text-gray-700"
+      >Categoría:</label
+    >
+    <select
+      id="category"
+      formControlName="category"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    >
+      <option value="trayectoria">Trayectoria</option>
+      <option value="noticias">Noticias</option>
+      <option value="actividades">Actividades</option>
+    </select>
+    @if(eventForm.get('category')?.invalid && (eventForm.get('category')?.dirty
+    || eventForm.get('category')?.touched)){
+    <div class="text-red-600 text-sm">Categoría es requerida.</div>
+    }
+  </div>
+  <div class="flex flex-col">
+    <label for="title" class="mb-2 font-semibold text-gray-700">Título:</label>
+    <input
+      id="title"
+      type="text"
+      formControlName="title"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    />
+    @if(eventForm.get('title')?.invalid && (eventForm.get('title')?.dirty ||
+    eventForm.get('title')?.touched)){
+    <div class="text-red-600 text-sm">Título es requerido.</div>
+    }
+  </div>
+  <div class="flex flex-col">
+    <label for="subtitle" class="mb-2 font-semibold text-gray-700"
+      >Subtítulo:</label
+    >
+    <input
+      id="subtitle"
+      type="text"
+      formControlName="subtitle"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    />
+  </div>
+  <div class="flex flex-col">
+    <label for="picture" class="mb-2 font-semibold text-gray-700"
+      >Imágen:</label
+    >
+    <input
+      id="picture"
+      type="text"
+      formControlName="picture"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    />
+  </div>
+  <div class="flex flex-col">
+    <label for="year" class="mb-2 font-semibold text-gray-700">Año:</label>
+    <input
+      id="year"
+      type="number"
+      formControlName="year"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    />
+    @if(eventForm.get('year')?.invalid && (eventForm.get('year')?.dirty ||
+    eventForm.get('year')?.touched)){
+    <div class="text-red-600 text-sm">Categoría es requerida.</div>
+    }
+  </div>
+
+  <div class="flex flex-col">
+    <label for="description" class="mb-2 font-semibold text-gray-700"
+      >Descripción:</label
+    >
+    <textarea
+      id="description"
+      type="text"
+      rows="6"
+      formControlName="description"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    ></textarea>
+    @if(eventForm.get('description')?.invalid &&
+    (eventForm.get('description')?.dirty ||
+    eventForm.get('description')?.touched)){
+    <div class="text-red-600 text-sm">Descripción es requerida.</div>
+    }
+  </div>
+  <div class="flex flex-col">
+    <label for="url" class="mb-2 font-semibold text-gray-700">Link:</label>
+    <input
+      id="url"
+      type="text"
+      formControlName="url"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+    />
+  </div>
+  <div class="flex justify-end">
+    <button
+      type="submit"
+      (ngSubmit)="onSubmitEvent()"
+      class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
+    >
+      Crear Evento
+    </button>
+  </div>
+</form>
+
+<app-success
+  [show]="showSuccessModal"
+  [message]="successMessage"
+  (close)="showSuccessModal = false"
+></app-success>

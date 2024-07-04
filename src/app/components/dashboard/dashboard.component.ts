@@ -3,16 +3,19 @@ import { Router } from '@angular/router';
 import { SupabaseService } from '../../services/auth.service';
 import { MembersComponent } from './members/members.component';
 import { EventsDBComponent } from './events-db/events-db.component';
+import { Member } from '../../interface';
+import { CreateComponent } from './create/create.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MembersComponent, EventsDBComponent],
+  imports: [MembersComponent, EventsDBComponent, CreateComponent, CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
-  members: any[] = [];
+  members: Member[] = [];
   trayectoria: any[] = [];
   noticias: any[] = [];
   actividades: any[] = [];
@@ -23,6 +26,10 @@ export class DashboardComponent {
   ) {}
 
   async ngOnInit() {
+    this.fetchData();
+  }
+
+  async fetchData() {
     this.members = await this.supabaseService.getMembers();
     this.trayectoria = await this.supabaseService.getEvents('trayectoria');
     this.noticias = await this.supabaseService.getEvents('noticias');
@@ -34,7 +41,16 @@ export class DashboardComponent {
     this.router.navigate(['/login']);
   }
 
-  onStatusChange(a: string) {
-    this.status = a;
+  onStatusChange(state: string) {
+    this.status = state;
+    this.fetchData();
+  }
+
+  onMemberCreated() {
+    this.fetchData();
+  }
+
+  onEventCreated() {
+    this.fetchData();
   }
 }
