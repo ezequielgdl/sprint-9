@@ -4,6 +4,7 @@
   >
     TRAYECTORIA
   </h1>
+  @defer {
   <section class="flex flex-col gap-4 p-4">
     @for (evento of eventos; track $index) {
     <div class="flex items-center">
@@ -17,7 +18,9 @@
         <p class="text-gray-600">{{ evento.description }}</p>
       </div>
     </div>
-
     }
   </section>
+  } @loading {
+  <div>Loading...</div>
+  }
 </main>

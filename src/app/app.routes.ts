@@ -7,7 +7,8 @@ import { IwfComponent } from './components/iwf/iwf.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './auth.guard';
-import { UpdateMemberComponent } from './components/dashboard/updateMember/update.component';
+import { UpdateMemberComponent } from './components/dashboard/update-member/update.component';
+import { UpdateEventComponent } from './components/dashboard/update-event/update-event.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,5 +22,6 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'login', component: LoginComponent },
-  { path: 'update/:id', component: UpdateMemberComponent },
+  { path: 'dashboard/member/:id', component: UpdateMemberComponent },
+  { path: 'dashboard/event/:id', component: UpdateEventComponent },
 ];

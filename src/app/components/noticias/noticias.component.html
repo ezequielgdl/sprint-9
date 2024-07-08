@@ -4,6 +4,7 @@
   >
     NOTICIAS
   </h1>
+  @defer {
   <section class="p-6 flex flex-wrap justify-center gap-6">
     @for (noticia of noticias; track $index) {
     <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
@@ -15,4 +16,7 @@
     </div>
     }
   </section>
+  } @loading {
+  <div class="p-6 flex justify-center">Loading...</div>
+  }
 </main>

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SupabaseService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events-db',
@@ -12,7 +13,10 @@ export class EventsDBComponent {
   @Input() events!: any[];
   @Input() category!: string;
 
-  constructor(private supabaseService: SupabaseService) {}
+  constructor(
+    private supabaseService: SupabaseService,
+    private router: Router
+  ) {}
 
   async onDelete(table: string, id: number) {
     try {
@@ -22,5 +26,9 @@ export class EventsDBComponent {
       console.error('Error deleting member:');
       alert(error);
     }
+  }
+
+  onUpdate(id: string) {
+    this.router.navigate(['dashboard/event', id]);
   }
 }

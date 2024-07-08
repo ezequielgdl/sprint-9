@@ -29,6 +29,6 @@ export class MembersComponent {
   }
 
   onUpdate(id: string) {
-    this.router.navigate(['update', id]);
+    this.router.navigate(['dashboard/member', id]);
   }
 }

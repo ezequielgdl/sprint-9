@@ -56,8 +56,6 @@ export class UpdateMemberComponent {
   }
 
   async onSubmitUpdate() {
-    console.log(this.memberForm.value);
-    console.log(this.id);
     if (this.memberForm.valid && this.id) {
       const member: Member = this.memberForm.value as Member;
       await this.supabaseService.update(member, this.id, 'members');
