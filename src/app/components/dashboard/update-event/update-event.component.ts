@@ -7,11 +7,12 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SupabaseService } from '../../../services/auth.service';
+import { SuccessComponent } from '../success/success.component';
 
 @Component({
   selector: 'app-update-event',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, SuccessComponent],
   templateUrl: './update-event.component.html',
   styleUrl: './update-event.component.css',
 })
@@ -21,6 +22,8 @@ export class UpdateEventComponent {
     private supabaseService: SupabaseService,
     private router: Router
   ) {}
+  showSuccessModal: boolean = false;
+  successMessage: string = '';
 
   id: string | null = null;
   data: any | null = null;
@@ -65,8 +68,14 @@ export class UpdateEventComponent {
     if (this.eventForm.valid && this.id) {
       const event: Event = this.eventForm.value as Event;
       await this.supabaseService.update(event, this.id, 'events');
+      this.successMessage = 'Evento actualizado';
+      this.showSuccessModal = true;
     }
-    this.router.navigate(['dashboard']);
+  }
+
+  onModalClose() {
+    this.showSuccessModal = false;
+    this.navigateBack();
   }
 
   navigateBack() {

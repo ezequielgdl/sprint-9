@@ -84,3 +84,9 @@
   </form>
   }
 </section>
+
+<app-success
+  [show]="showSuccessModal"
+  [message]="successMessage"
+  (close)="onModalClose()"
+></app-success>

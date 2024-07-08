@@ -8,15 +8,18 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { SuccessComponent } from '../success/success.component';
 
 @Component({
   selector: 'app-update',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, SuccessComponent],
   templateUrl: './update.component.html',
   styleUrl: './update.component.css',
 })
 export class UpdateMemberComponent {
+  showSuccessModal: boolean = false;
+  successMessage: string = '';
   id: string | null = null;
   data: any | null = null;
 
@@ -59,8 +62,14 @@ export class UpdateMemberComponent {
     if (this.memberForm.valid && this.id) {
       const member: Member = this.memberForm.value as Member;
       await this.supabaseService.update(member, this.id, 'members');
+      this.successMessage = 'Miembro actualizado';
+      this.showSuccessModal = true;
     }
-    this.router.navigate(['dashboard']);
+  }
+
+  onModalClose() {
+    this.showSuccessModal = false;
+    this.navigateBack();
   }
 
   navigateBack() {
