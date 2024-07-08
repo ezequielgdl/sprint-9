@@ -38,6 +38,19 @@ export class SupabaseService {
     return data;
   }
 
+  async getById(id: string, category: string) {
+    const { data, error } = await this.supabaseClient
+      .from(category)
+      .select()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error', error);
+      return error.message;
+    }
+    return data;
+  }
+
   async delete(table: string, id: number) {
     const response = await this.supabaseClient
       .from(table)
@@ -62,6 +75,18 @@ export class SupabaseService {
     const { data, error } = await this.supabaseClient
       .from('events')
       .insert(event);
+    if (error) {
+      console.error('Error', error);
+      return error.message;
+    }
+    return data;
+  }
+
+  async update(data: any, id: string, category: string) {
+    const { error } = await this.supabaseClient
+      .from(category)
+      .update(data)
+      .eq('id', id);
     if (error) {
       console.error('Error', error);
       return error.message;

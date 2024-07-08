@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SupabaseService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-members',
@@ -12,7 +13,10 @@ export class MembersComponent {
   @Input()
   members!: any[];
 
-  constructor(private supabaseService: SupabaseService) {}
+  constructor(
+    private supabaseService: SupabaseService,
+    private router: Router
+  ) {}
 
   async onDelete(table: string, id: number) {
     try {
@@ -22,5 +26,9 @@ export class MembersComponent {
       console.error('Error deleting member:');
       alert(error);
     }
+  }
+
+  onUpdate(id: string) {
+    this.router.navigate(['update', id]);
   }
 }
