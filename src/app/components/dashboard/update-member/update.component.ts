@@ -22,11 +22,13 @@ export class UpdateMemberComponent {
   successMessage: string = '';
   id: string | null = null;
   data: any | null = null;
+  selectedFile: File | null = null;
+  updating: boolean = false;
 
   memberForm = new FormGroup({
     name: new FormControl('', Validators.required),
     title: new FormControl('', Validators.required),
-    avatar: new FormControl(''),
+    avatar: new FormControl(null),
     role: new FormControl('', Validators.required),
   });
 
@@ -46,13 +48,12 @@ export class UpdateMemberComponent {
   }
 
   async fetchData(id: string) {
-    this.data = await this.supabaseService.getById(this.id!, 'members');
-    console.log(this.data);
+    this.data = await this.supabaseService.getById(id, 'members');
     if (this.data) {
       this.memberForm.patchValue({
         name: this.data[0].name,
         title: this.data[0].title,
-        avatar: this.data[0].avatar,
+        avatar: null,
         role: this.data[0].role,
       });
     }
@@ -60,10 +61,33 @@ export class UpdateMemberComponent {
 
   async onSubmitUpdate() {
     if (this.memberForm.valid && this.id) {
+      this.updating = true;
       const member: Member = this.memberForm.value as Member;
+      member.avatar = this.data[0].avatar;
+      if (this.selectedFile) {
+        const fileName = `${new Date().getTime()}_${this.selectedFile.name}`;
+        const { data, error } = await this.supabaseService.uploadImage(
+          fileName,
+          this.selectedFile,
+          'avatars'
+        );
+        if (error) {
+          console.error('File upload error:', error);
+          return;
+        }
+        member.avatar = data;
+      }
       await this.supabaseService.update(member, this.id, 'members');
+      this.updating = false;
       this.successMessage = 'Miembro actualizado';
       this.showSuccessModal = true;
+    }
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
     }
   }
 

@@ -23,6 +23,7 @@ export class CreateComponent {
   showSuccessModal: boolean = false;
   successMessage: string = '';
   selectedFile: File | null = null;
+  creating: boolean = false;
 
   eventForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -42,6 +43,7 @@ export class CreateComponent {
 
   async onSubmitMember() {
     if (this.memberForm.valid) {
+      this.creating = true;
       const member: Member = this.memberForm.value as Member;
       if (this.selectedFile) {
         const fileName = `${new Date().getTime()}_${this.selectedFile.name}`;
@@ -58,6 +60,7 @@ export class CreateComponent {
         member.avatar = data;
       }
       await this.supabaseService.createMember(member);
+      this.creating = false;
       this.successMessage = 'Miembro agregado con éxito';
       this.showSuccessModal = true;
       this.memberForm.reset();

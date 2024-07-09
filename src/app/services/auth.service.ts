@@ -99,7 +99,9 @@ export class SupabaseService {
   async uploadImage(fileName: string, file: File, bucket: string) {
     const { data, error } = await this.supabaseClient.storage
       .from(bucket)
-      .upload(fileName, file);
+      .upload(fileName, file, {
+        upsert: true,
+      });
 
     if (error) {
       return { error };

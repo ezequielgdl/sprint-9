@@ -38,6 +38,7 @@
       id="avatar"
       type="file"
       (change)="onFileSelected($event)"
+      accept="image/jpeg, image/png, image/jpg"
       formControlName="avatar"
       class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
     />
@@ -60,12 +61,16 @@
     }
   </div>
   <div class="flex justify-end">
+    @if (creating) {
+    <div>Creando...</div>
+    } @if (!creating) {
     <button
       type="submit"
+      [disabled]="creating"
       class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
     >
-      Crear Miembro
-    </button>
+      Crear Miembro</button
+    >}
   </div>
 </form>
 
