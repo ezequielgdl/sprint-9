@@ -54,10 +54,37 @@ export class SupabaseService {
   }
 
   async delete(table: string, id: number) {
+    const { data: record, error } = await this.supabaseClient
+      .from(table)
+      .select('avatar')
+      .eq('id', id)
+      .single();
+
+    if (error) {
+      console.error('Error fetching record:', error.message);
+      return { error };
+    }
+
+    if (!record) {
+      console.error(`Record with ID ${id} not found.`);
+      return { error: { message: `Record with ID ${id} not found.` } };
+    }
+
+    const avatarUrl = record.avatar;
+    const filename = avatarUrl.split('/').pop();
+
+    const { data: deleteData, error: deleteError } =
+      await this.supabaseClient.storage.from('avatars').remove([filename]);
+
+    if (deleteError) {
+      console.error(deleteError.message);
+    }
+
     const response = await this.supabaseClient
       .from(table)
       .delete()
       .eq('id', id);
+
     return response;
   }
 
