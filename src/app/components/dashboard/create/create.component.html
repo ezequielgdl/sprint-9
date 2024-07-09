@@ -129,7 +129,9 @@
     >
     <input
       id="picture"
-      type="text"
+      type="file"
+      (change)="onEventFileSelected($event)"
+      accept="image/jpeg, image/png, image/jpg"
       formControlName="picture"
       class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
     />
@@ -175,13 +177,16 @@
     />
   </div>
   <div class="flex justify-end">
+    @if (creating) {
+    <div>Creando...</div>
+    } @else {
     <button
       type="submit"
       (ngSubmit)="onSubmitEvent()"
       class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
     >
-      Crear Evento
-    </button>
+      Crear Evento</button
+    >}
   </div>
 </form>
 

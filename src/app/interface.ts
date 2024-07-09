@@ -5,7 +5,7 @@ export interface Member {
   avatar?: string;
 }
 
-export interface Event {
+export interface Evento {
   title: string;
   subtitle?: string;
   year?: number;

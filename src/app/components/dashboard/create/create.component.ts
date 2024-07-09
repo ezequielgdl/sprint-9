@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SupabaseService } from '../../../services/auth.service';
-import { Member } from '../../../interface';
+import { Member, Evento } from '../../../interface';
 import { SuccessComponent } from '../success/success.component';
 
 @Component({
@@ -23,6 +23,7 @@ export class CreateComponent {
   showSuccessModal: boolean = false;
   successMessage: string = '';
   selectedFile: File | null = null;
+  selectedEventFile: File | null = null;
   creating: boolean = false;
 
   eventForm = new FormGroup({
@@ -31,7 +32,7 @@ export class CreateComponent {
     year: new FormControl(2024, Validators.required),
     description: new FormControl('', Validators.required),
     url: new FormControl(''),
-    picture: new FormControl('https://placehold.co/600x400/orange/white'),
+    picture: new FormControl(null),
     category: new FormControl('', Validators.required),
   });
   memberForm = new FormGroup({
@@ -75,10 +76,35 @@ export class CreateComponent {
     }
   }
 
+  onEventFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedEventFile = input.files[0];
+    }
+  }
+
   async onSubmitEvent() {
     if (this.eventForm.valid) {
-      const event: Event = this.eventForm.value as Event;
+      this.creating = true;
+      const event: Evento = this.eventForm.value as Evento;
+      if (this.selectedEventFile) {
+        const fileName = `${new Date().getTime()}_${
+          this.selectedEventFile.name
+        }`;
+        const { data, error } = await this.supabaseService.uploadImage(
+          fileName,
+          this.selectedEventFile,
+          'events'
+        );
+
+        if (error) {
+          console.error('File upload error:', error);
+          return;
+        }
+        event.picture = data;
+      }
       await this.supabaseService.createEvent(event);
+      this.creating = false;
       this.successMessage = 'Evento agregado con éxito';
       this.showSuccessModal = true;
       this.eventForm.reset();
