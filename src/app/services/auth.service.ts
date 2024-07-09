@@ -15,6 +15,8 @@ export class SupabaseService {
     );
   }
 
+  // CRUD
+
   async getMembers() {
     const { data, error } = await this.supabaseClient.from('members').select();
 
@@ -93,6 +95,23 @@ export class SupabaseService {
     }
     return data;
   }
+
+  async uploadImage(fileName: string, file: File, bucket: string) {
+    const { data, error } = await this.supabaseClient.storage
+      .from(bucket)
+      .upload(fileName, file);
+
+    if (error) {
+      return { error };
+    }
+    const { data: publicUrl } = this.supabaseClient.storage
+      .from(bucket)
+      .getPublicUrl(data.path);
+
+    return { data: publicUrl.publicUrl, error: null };
+  }
+
+  // AUTH
 
   async isLoggedIn(): Promise<User | null> {
     try {

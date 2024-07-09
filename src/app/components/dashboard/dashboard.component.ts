@@ -34,7 +34,6 @@ export class DashboardComponent {
     this.trayectoria = await this.supabaseService.getEvents('trayectoria');
     this.noticias = await this.supabaseService.getEvents('noticias');
     this.actividades = await this.supabaseService.getEvents('actividades');
-    console.log(this.actividades);
   }
 
   async onSignOut() {

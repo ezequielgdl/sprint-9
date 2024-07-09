@@ -36,7 +36,8 @@
     <label for="avatar" class="mb-2 font-semibold text-gray-700">Avatar:</label>
     <input
       id="avatar"
-      type="text"
+      type="file"
+      (change)="onFileSelected($event)"
       formControlName="avatar"
       class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
     />

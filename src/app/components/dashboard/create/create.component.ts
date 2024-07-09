@@ -22,6 +22,7 @@ export class CreateComponent {
   constructor(private supabaseService: SupabaseService) {}
   showSuccessModal: boolean = false;
   successMessage: string = '';
+  selectedFile: File | null = null;
 
   eventForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -42,11 +43,32 @@ export class CreateComponent {
   async onSubmitMember() {
     if (this.memberForm.valid) {
       const member: Member = this.memberForm.value as Member;
+      if (this.selectedFile) {
+        const fileName = `${new Date().getTime()}_${this.selectedFile.name}`;
+        const { data, error } = await this.supabaseService.uploadImage(
+          fileName,
+          this.selectedFile,
+          'avatars'
+        );
+
+        if (error) {
+          console.error('File upload error:', error);
+          return;
+        }
+        member.avatar = data;
+      }
       await this.supabaseService.createMember(member);
       this.successMessage = 'Miembro agregado con éxito';
       this.showSuccessModal = true;
       this.memberForm.reset();
       this.memberCreated.emit();
+    }
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
     }
   }
 
