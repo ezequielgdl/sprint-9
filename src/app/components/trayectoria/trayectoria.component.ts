@@ -15,5 +15,6 @@ export class TrayectoriaComponent {
 
   async ngOnInit() {
     this.eventos = await this.supabaseService.getEvents('trayectoria');
+    this.eventos.sort((a, b) => a.year - b.year);
   }
 }
