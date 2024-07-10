@@ -18,13 +18,12 @@ export class EventsDBComponent {
     private router: Router
   ) {}
 
-  async onDelete(table: string, id: number) {
+  async onDelete(table: string, id: number, bucket: string, column: string) {
     try {
-      await this.supabaseService.delete(table, id);
-      await this.supabaseService.getEvents(this.category);
+      await this.supabaseService.delete(table, id, bucket, column);
+      this.events = await this.supabaseService.getEvents(this.category);
     } catch (error) {
       console.error('Error deleting member:');
-      alert(error);
     }
   }
 

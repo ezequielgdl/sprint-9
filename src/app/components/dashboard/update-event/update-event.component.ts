@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { SupabaseService } from '../../../services/auth.service';
 import { SuccessComponent } from '../success/success.component';
+import { Evento } from '../../../interface';
 
 @Component({
   selector: 'app-update-event',
@@ -24,9 +25,10 @@ export class UpdateEventComponent {
   ) {}
   showSuccessModal: boolean = false;
   successMessage: string = '';
-
   id: string | null = null;
   data: any | null = null;
+  selectedFile: File | null = null;
+  updating: boolean = false;
 
   eventForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -48,8 +50,7 @@ export class UpdateEventComponent {
   }
 
   async fetchData(id: string) {
-    this.data = await this.supabaseService.getById(this.id!, 'events');
-    console.log(this.data);
+    this.data = await this.supabaseService.getById(id, 'events');
     if (this.data && this.data.length > 0) {
       this.eventForm.patchValue({
         title: this.data[0].title,
@@ -57,7 +58,7 @@ export class UpdateEventComponent {
         year: this.data[0].year,
         description: this.data[0].description,
         url: this.data[0].url,
-        picture: this.data[0].picture,
+        picture: null,
         category: this.data[0].category,
       });
     }
@@ -66,10 +67,32 @@ export class UpdateEventComponent {
   async onSubmitEvent() {
     console.log('Attempting...');
     if (this.eventForm.valid && this.id) {
-      const event: Event = this.eventForm.value as Event;
+      this.updating = true;
+      const event: Evento = this.eventForm.value as Evento;
+      event.picture = this.data[0].avatar;
+      if (this.selectedFile) {
+        const fileName = `${new Date().getTime()}_${this.selectedFile.name}`;
+        const { data, error } = await this.supabaseService.uploadImage(
+          fileName,
+          this.selectedFile,
+          'events'
+        );
+        if (error) {
+          console.error('File upload error:', error);
+          return;
+        }
+        event.picture = data;
+      }
       await this.supabaseService.update(event, this.id, 'events');
       this.successMessage = 'Evento actualizado';
       this.showSuccessModal = true;
+    }
+  }
+
+  onEventFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
     }
   }
 

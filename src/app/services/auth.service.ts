@@ -53,40 +53,69 @@ export class SupabaseService {
     return data;
   }
 
-  async delete(table: string, id: number) {
-    const { data: record, error } = await this.supabaseClient
-      .from(table)
-      .select('avatar')
-      .eq('id', id)
-      .single();
-
-    if (error) {
-      console.error('Error fetching record:', error.message);
-      return { error };
+  async delete(table: string, id: number, bucket: string, column: string) {
+    try {
+      console.log(`Fetching record from table: ${table}, id: ${id}, column: ${column}`);
+  
+      const { data: record, error } = await this.supabaseClient
+        .from(table)
+        .select(column)
+        .eq('id', id)
+        .single();
+  
+      if (error) {
+        console.error('Error fetching record:', error.message);
+        return { error };
+      }
+  
+      if (!record) {
+        console.error(`Record with ID ${id} not found.`);
+        return { error: { message: `Record with ID ${id} not found.` } };
+      }
+  
+      console.log('Record fetched:', record);
+  
+      const url = (record as { [key: string]: any })[column];
+      if (url) {
+        const filename = url.split('/').pop();
+        if (filename) {
+          console.log(`Deleting file: ${filename} from bucket: ${bucket}`);
+  
+          const { data: deleteData, error: deleteError } =
+            await this.supabaseClient.storage.from(bucket).remove([filename]);
+  
+          if (deleteError) {
+            console.error('Error deleting file:', deleteError.message);
+            return { error: deleteError };
+          }
+  
+          console.log('File deleted:', deleteData);
+        } else {
+          console.error(`Failed to extract filename from URL: ${url}`);
+        }
+      } else {
+        console.log(`Column ${column} is empty in record, skipping file deletion.`);
+      }
+  
+      const { data: deleteRecord, error: deleteRecordError } = await this.supabaseClient
+        .from(table)
+        .delete()
+        .eq('id', id);
+  
+      if (deleteRecordError) {
+        console.error('Error deleting record:', deleteRecordError.message);
+        return { error: deleteRecordError };
+      }
+  
+      console.log('Record deleted:', deleteRecord);
+      return { data: deleteRecord };
+    } catch (err) {
+      console.error('Unexpected error:', err);
+      return { error: err };
     }
-
-    if (!record) {
-      console.error(`Record with ID ${id} not found.`);
-      return { error: { message: `Record with ID ${id} not found.` } };
-    }
-
-    const avatarUrl = record.avatar;
-    const filename = avatarUrl.split('/').pop();
-
-    const { data: deleteData, error: deleteError } =
-      await this.supabaseClient.storage.from('avatars').remove([filename]);
-
-    if (deleteError) {
-      console.error(deleteError.message);
-    }
-
-    const response = await this.supabaseClient
-      .from(table)
-      .delete()
-      .eq('id', id);
-
-    return response;
   }
+  
+  
 
   async createMember(member: Member) {
     const { data, error } = await this.supabaseClient

@@ -18,13 +18,12 @@ export class MembersComponent {
     private router: Router
   ) {}
 
-  async onDelete(table: string, id: number) {
+  async onDelete(table: string, id: number, bucket: string, column: string) {
     try {
-      await this.supabaseService.delete(table, id);
+      await this.supabaseService.delete(table, id, bucket, column);
       this.members = await this.supabaseService.getMembers();
     } catch (error) {
       console.error('Error deleting member:');
-      alert(error);
     }
   }
 
