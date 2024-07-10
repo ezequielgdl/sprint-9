@@ -1,1 +1,8 @@
-<p>contact works!</p>
+<form [formGroup]="contactForm">
+  <label for="name">Nombre:</label>
+  <input type="text" formControlName="name" />
+  <label for="name">Email:</label>
+  <input type="email" formControlName="email" />
+  <label for="name">Mensaje:</label>
+  <input type="text" formControlName="message" />
+</form>
