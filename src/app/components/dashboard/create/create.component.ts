@@ -8,11 +8,12 @@ import {
 import { SupabaseService } from '../../../services/auth.service';
 import { Member, Evento } from '../../../interface';
 import { SuccessComponent } from '../success/success.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create',
   standalone: true,
-  imports: [ReactiveFormsModule, SuccessComponent],
+  imports: [ReactiveFormsModule, SuccessComponent, CommonModule],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css',
 })
@@ -25,6 +26,8 @@ export class CreateComponent {
   selectedFile: File | null = null;
   selectedEventFile: File | null = null;
   creating: boolean = false;
+  submitted: boolean = false;
+  mode: boolean = true;
 
   eventForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -43,6 +46,7 @@ export class CreateComponent {
   });
 
   async onSubmitMember() {
+    this.submitted = true;
     if (this.memberForm.valid) {
       this.creating = true;
       const member: Member = this.memberForm.value as Member;
@@ -62,6 +66,7 @@ export class CreateComponent {
       }
       await this.supabaseService.createMember(member);
       this.creating = false;
+      this.submitted = false;
       this.successMessage = 'Miembro agregado con éxito';
       this.showSuccessModal = true;
       this.memberForm.reset();
@@ -84,6 +89,7 @@ export class CreateComponent {
   }
 
   async onSubmitEvent() {
+    this.submitted = true
     if (this.eventForm.valid) {
       this.creating = true;
       const event: Evento = this.eventForm.value as Evento;
@@ -105,6 +111,7 @@ export class CreateComponent {
       }
       await this.supabaseService.createEvent(event);
       this.creating = false;
+      this.submitted = true;
       this.successMessage = 'Evento agregado con éxito';
       this.showSuccessModal = true;
       this.eventForm.reset();
