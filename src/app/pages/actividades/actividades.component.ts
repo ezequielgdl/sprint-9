@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ImagecardComponent } from '../imagecard/imagecard.component';
+import { ImagecardComponent } from '../../components/imagecard/imagecard.component';
 import { SupabaseService } from '../../services/auth.service';
 
 @Component({

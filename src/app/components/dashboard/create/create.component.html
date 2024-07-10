@@ -1,15 +1,26 @@
 <!-- MEMBERS FORM -->
 <div class="flex items-center justify-center space-x-4">
-  <button       class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
-  [ngClass]="{
-    'font-semibold underline text-orange-600': mode === true
-  }" (click)="mode = true">EVENTOS</button>
-  <button       class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
-  [ngClass]="{
-    'font-semibold underline text-orange-600': mode === false
-  }" (click)="mode = false">MIEMBROS</button>
+  <button
+    class="text-sm text-gray-700 hover:underline hover:text-orange-700 focus:outline-none"
+    [ngClass]="{
+      'font-semibold underline text-orange-700': mode === true
+    }"
+    (click)="mode = true"
+  >
+    EVENTOS
+  </button>
+  <button
+    class="text-sm text-gray-700 hover:underline hover:text-orange-700 focus:outline-none"
+    [ngClass]="{
+      'font-semibold underline text-orange-700': mode === false
+    }"
+    (click)="mode = false"
+  >
+    MIEMBROS
+  </button>
 </div>
-@if (!mode) {<form
+@if (!mode) {
+<form
   action=""
   [formGroup]="memberForm"
   (ngSubmit)="onSubmitMember()"
@@ -24,7 +35,8 @@
       formControlName="name"
       class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
     />
-    @if(memberForm.get('name')?.invalid && (submitted || memberForm.get('name')?.touched)){
+    @if(memberForm.get('name')?.invalid && (submitted ||
+    memberForm.get('name')?.touched)){
     <div class="text-red-600 text-sm">Nombre es requerido.</div>
     }
   </div>
@@ -37,7 +49,8 @@
       formControlName="title"
       class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
     ></textarea>
-    @if(memberForm.get('title')?.invalid && (submitted || memberForm.get('title')?.touched)){
+    @if(memberForm.get('title')?.invalid && (submitted ||
+    memberForm.get('title')?.touched)){
     <div class="text-red-600 text-sm">Título es requerido.</div>
     }
   </div>
@@ -64,15 +77,19 @@
       <option value="socias">Socias</option>
       <option value="autoridades">Autoridades</option>
     </select>
-    @if(memberForm.get('role')?.invalid && (submitted || memberForm.get('role')?.touched)){
+    @if(memberForm.get('role')?.invalid && (submitted ||
+    memberForm.get('role')?.touched)){
     <div class="text-red-600 text-sm">Categoría es requerida.</div>
     }
   </div>
   <div class="flex justify-end">
     @if (creating) {
     <div>Creando...</div>
-    } @if (!creating) {
-      @if(memberForm.invalid && submitted) {    <div class="text-red-600 text-sm">Por favor rellenar los campos necesarios.</div>}
+    } @if (!creating) { @if(memberForm.invalid && submitted) {
+    <div class="text-red-600 text-sm">
+      Por favor rellenar los campos necesarios.
+    </div>
+    }
     <button
       type="submit"
       [disabled]="creating"
@@ -81,10 +98,12 @@
       Crear Miembro</button
     >}
   </div>
-</form>}
+</form>
+}
 
 <!-- EVENTOS FORM -->
-@if (mode) {<form
+@if (mode) {
+<form
   action=""
   [formGroup]="eventForm"
   (ngSubmit)="onSubmitEvent()"
@@ -104,8 +123,8 @@
       <option value="noticias">Noticias</option>
       <option value="actividades">Actividades</option>
     </select>
-    @if(eventForm.get('category')?.invalid && (submitted
-    || eventForm.get('category')?.touched)){
+    @if(eventForm.get('category')?.invalid && (submitted ||
+    eventForm.get('category')?.touched)){
     <div class="text-red-600 text-sm">Categoría es requerida.</div>
     }
   </div>
@@ -171,8 +190,7 @@
       formControlName="description"
       class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
     ></textarea>
-    @if(eventForm.get('description')?.invalid &&
-    (submitted ||
+    @if(eventForm.get('description')?.invalid && (submitted ||
     eventForm.get('description')?.touched)){
     <div class="text-red-600 text-sm">Descripción es requerida.</div>
     }
@@ -189,9 +207,12 @@
   <div class="flex justify-end">
     @if (creating) {
     <div>Creando...</div>
-    } @else {
-      @if(eventForm.invalid && submitted) {    <div class="text-red-600 text-sm">Por favor rellenar los campos necesarios.</div>}
-   
+    } @else { @if(eventForm.invalid && submitted) {
+    <div class="text-red-600 text-sm">
+      Por favor rellenar los campos necesarios.
+    </div>
+    }
+
     <button
       type="submit"
       (ngSubmit)="onSubmitEvent()"
@@ -200,8 +221,8 @@
       Crear Evento</button
     >}
   </div>
-</form>}
-
+</form>
+}
 
 <app-success
   [show]="showSuccessModal"

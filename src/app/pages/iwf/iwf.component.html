@@ -1,6 +1,6 @@
 <main class>
   <h1
-    class="text-center m-6 md:m-12 font-semibold text-xl md:text-3xl text-orange-500"
+    class="text-center m-6 md:m-12 font-semibold text-xl md:text-3xl text-orange-600"
   >
     ¿QUIÉNES SOMOS?
   </h1>
@@ -88,7 +88,7 @@
     </div>
   </div>
 
-  <h1 class="text-center m-6 font-semibold text-xl md:text-3xl text-orange-500">
+  <h1 class="text-center m-6 font-semibold text-xl md:text-3xl text-orange-600">
     AUTORIDADES
   </h1>
 
@@ -96,21 +96,21 @@
     @for (member of members; track $index) { @if (member.role === 'autoridades')
     {
     <div
-      class="bg-white border-l-4 border-orange-400 shadow-lg rounded-lg p-6 transition duration-300 hover:shadow-2xl hover:border-orange-600 w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.333%-2rem)] lg:w-[calc(25%-1.5rem)]"
+      class="bg-white border-l-4 border-orange-500 shadow-lg rounded-lg p-6 transition duration-300 hover:shadow-2xl hover:border-orange-700 w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.333%-2rem)] lg:w-[calc(25%-1.5rem)]"
     >
       <h6 class="text-lg font-semibold mb-1">{{ member.name }}</h6>
       <p class="text-gray-600">{{ member.title }}</p>
     </div>
     } }
   </section>
-  <h1 class="text-center m-6 font-semibold text-xl md:text-3xl text-orange-500">
+  <h1 class="text-center m-6 font-semibold text-xl md:text-3xl text-orange-600">
     SOCIAS
   </h1>
 
   <section class="flex flex-wrap justify-center gap-6 p-4">
     @for (member of members; track $index) { @if (member.role === 'socias') {
     <div
-      class="bg-white border-l-4 border-orange-400 shadow-lg rounded-lg p-6 transition duration-300 hover:shadow-2xl hover:border-orange-600 w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.333%-2rem)] lg:w-[calc(25%-1.5rem)]"
+      class="bg-white border-l-4 border-orange-500 shadow-lg rounded-lg p-6 transition duration-300 hover:shadow-2xl hover:border-orange-700 w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.333%-2rem)] lg:w-[calc(25%-1.5rem)]"
     >
       <h6 class="text-lg font-semibold mb-1">{{ member.name }}</h6>
       <p class="text-gray-600">{{ member.title }}</p>
