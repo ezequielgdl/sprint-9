@@ -1,0 +1,51 @@
+@keyframes slide {
+  0% {
+    transform: translateY(-100%);
+  }
+  90% {
+    opacity: 100%;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0%;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0%;
+    transform: translateY(100%);
+  }
+  50% {
+    opacity: 100%;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+.slide-animation {
+  animation: slide 10s linear infinite;
+  animation-fill-mode: backwards;
+}
+
+.appear-animation {
+  animation: appear 5s infinite;
+}
+
+.delay-0 {
+  animation-delay: 0s;
+}
+
+.delay-2 {
+  animation-delay: 2s; /* Adjust delay for a subtle gap between animations */
+}
+
+.delay-4 {
+  animation-delay: 0s;
+}
+
+.delay-6 {
+  animation-delay: 3s;
+}
