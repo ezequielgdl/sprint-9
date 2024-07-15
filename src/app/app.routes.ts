@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './auth.guard';
 import { UpdateMemberComponent } from './components/dashboard/update-member/update.component';
 import { UpdateEventComponent } from './components/dashboard/update-event/update-event.component';
+import { EventoComponent } from './pages/evento/evento.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,4 +25,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard/member/:id', component: UpdateMemberComponent },
   { path: 'dashboard/event/:id', component: UpdateEventComponent },
+  { path: 'evento/:id', component: EventoComponent },
 ];
