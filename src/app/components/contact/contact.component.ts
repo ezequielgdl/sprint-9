@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -17,6 +17,13 @@ export class ContactComponent {
   contactForm = new FormGroup({
     name: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
+    phone: new FormControl(''),
     message: new FormControl('', Validators.required),
   });
+
+  onSubmit() {
+    if (this.contactForm.valid) {
+      console.log(this.contactForm.value);
+    }
+  }
 }

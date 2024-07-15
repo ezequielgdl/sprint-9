@@ -10,7 +10,7 @@
     } @if (!isLoading) { @for (actividad of actividades; track $index) {
     <div
       (click)="onNavigate(actividad.id)"
-      class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]"
+      class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] cursor-pointer"
     >
       <app-imagecard
         [title]="actividad.title"

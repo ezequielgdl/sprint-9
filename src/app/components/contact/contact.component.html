@@ -1,8 +1,44 @@
-<form [formGroup]="contactForm">
-  <label for="name">Nombre:</label>
-  <input type="text" formControlName="name" />
-  <label for="name">Email:</label>
-  <input type="email" formControlName="email" />
-  <label for="name">Mensaje:</label>
-  <input type="text" formControlName="message" />
-</form>
+<section class="m-4 flex md:flex-row flex-col">
+  <div class="p-12 space-y-4">
+    <h1 class="text-xl font-semibold">CONTACTO</h1>
+    <p>Foro Internacional de Mujeres | Asociación Civil</p>
+    <img src="/logo.png" alt="" />
+  </div>
+  <form
+    (ngSubmit)="onSubmit()"
+    class="flex p-12 flex-col space-y-3 w-full"
+    [formGroup]="contactForm"
+  >
+    <label for="name">Nombre:</label>
+    <input
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+      type="text"
+      formControlName="name"
+    />
+    <label for="email">Email:</label>
+    <input
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+      type="email"
+      formControlName="email"
+    />
+    <label for="phone">Teléfono:</label>
+    <input
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+      type="text"
+      formControlName="phone"
+    />
+    <label for="message">Mensaje:</label>
+    <textarea
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+      type="text"
+      rows="4"
+      formControlName="message"
+    ></textarea>
+    <button
+      type="submit"
+      class="bg-orange-500 md:w-40 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
+    >
+      Enviar Mensaje
+    </button>
+  </form>
+</section>

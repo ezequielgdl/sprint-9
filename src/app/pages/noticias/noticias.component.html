@@ -10,7 +10,7 @@
     } @if (!isLoading) { @for (noticia of noticias; track $index) {
     <div
       (click)="onNavigate(noticia.id)"
-      class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]"
+      class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] cursor-pointer"
     >
       <app-imagecard
         [title]="noticia.title"

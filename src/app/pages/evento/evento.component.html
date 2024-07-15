@@ -1,11 +1,16 @@
-<section class="m-4">
+<section class="m-12 flex flex-col items-center">
   @if (isLoading) {
   <app-loading></app-loading>
   } @if (!isLoading && data[0]) {
   <h1 class="text-lg font-semibold">{{ data[0].title }}</h1>
   <img [src]="data[0].picture" [alt]="data[0].title" class="my-4" />
-  <p>{{ data[0].description }}</p>
-  <a [href]="data[0].url" target="_blank">Link a la noticia</a>
+  <p class="">{{ data[0].description }}</p>
+  <a
+    class="text-orange-600 my-4 hover:text-orange-900 hover:font-bold"
+    [href]="data[0].url"
+    target="_blank"
+    >Link a la noticia</a
+  >
   } @else if (!isLoading && data.length === 0){
   <p>
     Este evento no existe. Volver a la
