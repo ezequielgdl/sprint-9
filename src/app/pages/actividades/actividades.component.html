@@ -5,7 +5,9 @@
     ACTIVIDADES
   </h1>
   <section class="p-6 flex flex-wrap justify-center gap-6">
-    @for (actividad of actividades; track $index) {
+    @if (isLoading) {
+    <app-loading></app-loading>
+    } @if (!isLoading) { @for (actividad of actividades; track $index) {
     <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
       <app-imagecard
         [title]="actividad.title"
@@ -13,6 +15,6 @@
         [subtitle]="actividad.subtitle"
       ></app-imagecard>
     </div>
-    }
+    } }
   </section>
 </main>
