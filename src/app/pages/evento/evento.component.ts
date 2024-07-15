@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SupabaseService } from '../../services/auth.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { LoadingComponent } from '../../components/loading/loading.component';
 
 @Component({
