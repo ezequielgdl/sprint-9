@@ -43,6 +43,8 @@ export class CreateComponent {
     title: new FormControl('', Validators.required),
     avatar: new FormControl(''),
     role: new FormControl('', Validators.required),
+    linkedin: new FormControl(''),
+    category: new FormControl([]),
   });
 
   async onSubmitMember() {

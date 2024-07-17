@@ -3,6 +3,8 @@ export interface Member {
   title: string;
   role: string;
   avatar?: string;
+  linkedin?: string;
+  category?: string[];
 }
 
 export interface Evento {

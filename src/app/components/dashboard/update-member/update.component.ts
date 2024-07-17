@@ -30,6 +30,8 @@ export class UpdateMemberComponent {
     title: new FormControl('', Validators.required),
     avatar: new FormControl(null),
     role: new FormControl('', Validators.required),
+    linkedin: new FormControl(''),
+    category: new FormControl([]),
   });
 
   constructor(
@@ -55,6 +57,8 @@ export class UpdateMemberComponent {
         title: this.data[0].title,
         avatar: null,
         role: this.data[0].role,
+        linkedin: this.data[0].linkedin,
+        category: this.data[0].category,
       });
     }
   }

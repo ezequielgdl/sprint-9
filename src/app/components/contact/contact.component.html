@@ -1,12 +1,14 @@
-<section class="m-4 flex md:flex-row flex-col">
-  <div class="p-12 space-y-4">
+<section class="md:m-4 flex md:flex-row flex-col">
+  <div
+    class="p-4 md:p-12 space-y-4 text-center flex flex-col items-center md:text-left"
+  >
     <h1 class="text-xl font-semibold">CONTACTO</h1>
     <p>Foro Internacional de Mujeres | Asociación Civil</p>
-    <img src="/logo.png" alt="" />
+    <img class="w-1/2 md:w-full" src="/logo.png" alt="" />
   </div>
   <form
     (ngSubmit)="onSubmit()"
-    class="flex p-12 flex-col space-y-3 w-full"
+    class="flex p-5 md:p-12 flex-col space-y-3 w-full"
     [formGroup]="contactForm"
   >
     <label for="name">Nombre:</label>
