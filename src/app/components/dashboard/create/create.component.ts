@@ -92,7 +92,10 @@ export class CreateComponent {
     this.submitted = true;
     if (this.eventForm.valid) {
       this.creating = true;
-      const event: Evento = this.eventForm.value as Evento;
+      const event: Evento = {
+        ...this.eventForm.value,
+        description: this.eventForm.value.description!.replace(/\n/g, '<br>'),
+      } as Evento;
       if (this.selectedEventFile) {
         const fileName = `${new Date().getTime()}_${
           this.selectedEventFile.name

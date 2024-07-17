@@ -68,7 +68,10 @@ export class UpdateEventComponent {
     console.log('Attempting...');
     if (this.eventForm.valid && this.id) {
       this.updating = true;
-      const event: Evento = this.eventForm.value as Evento;
+      const event: Evento = {
+        ...this.eventForm.value,
+        description: this.eventForm.value.description!.replace(/\n/g, '<br/>'),
+      } as Evento;
       event.picture = this.data[0].avatar;
       if (this.selectedFile) {
         const fileName = `${new Date().getTime()}_${this.selectedFile.name}`;

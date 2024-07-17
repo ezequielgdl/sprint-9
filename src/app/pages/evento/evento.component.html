@@ -4,7 +4,7 @@
   } @if (!isLoading && data[0]) {
   <h1 class="text-lg font-semibold">{{ data[0].title }}</h1>
   <img [src]="data[0].picture" [alt]="data[0].title" class="my-4" />
-  <p class="">{{ data[0].description }}</p>
+  <p class="" [innerHTML]="data[0].description"></p>
   <a
     class="text-orange-600 my-4 hover:text-orange-900 hover:font-bold"
     [href]="data[0].url"
