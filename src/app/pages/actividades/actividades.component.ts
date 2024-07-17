@@ -23,6 +23,7 @@ export class ActividadesComponent {
   async ngOnInit() {
     try {
       this.actividades = await this.supabaseService.getEvents('actividades');
+      console.log(this.actividades);
     } catch (error) {
       console.error(error);
     } finally {

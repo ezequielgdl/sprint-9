@@ -35,7 +35,7 @@ export class CreateComponent {
     year: new FormControl(2024, Validators.required),
     description: new FormControl('', Validators.required),
     url: new FormControl(''),
-    picture: new FormControl(null),
+    picture: new FormControl('/iwf-screenshot.webp'),
     category: new FormControl('', Validators.required),
   });
   memberForm = new FormGroup({
@@ -89,7 +89,7 @@ export class CreateComponent {
   }
 
   async onSubmitEvent() {
-    this.submitted = true
+    this.submitted = true;
     if (this.eventForm.valid) {
       this.creating = true;
       const event: Evento = this.eventForm.value as Evento;
