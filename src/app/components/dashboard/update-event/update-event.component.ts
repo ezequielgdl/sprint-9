@@ -65,7 +65,6 @@ export class UpdateEventComponent {
   }
 
   async onSubmitEvent() {
-    console.log('Attempting...');
     if (this.eventForm.valid && this.id) {
       this.updating = true;
       const event: Evento = {
