@@ -12,7 +12,6 @@ export interface Evento {
   subtitle?: string;
   year?: number;
   description: string;
-  url?: string;
   picture?: string;
   category: string;
 }

@@ -9,11 +9,40 @@ import { SupabaseService } from '../../../services/auth.service';
 import { Member, Evento } from '../../../interface';
 import { SuccessComponent } from '../success/success.component';
 import { CommonModule } from '@angular/common';
+import {
+  ClassicEditor,
+  AccessibilityHelp,
+  AutoImage,
+  Autosave,
+  Bold,
+  Essentials,
+  FontColor,
+  GeneralHtmlSupport,
+  ImageBlock,
+  ImageInsertViaUrl,
+  ImageToolbar,
+  Italic,
+  Link,
+  List,
+  Paragraph,
+  SelectAll,
+  Underline,
+  Undo,
+  EditorConfig,
+} from 'ckeditor5';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
+import 'ckeditor5/ckeditor5.css';
 
 @Component({
   selector: 'app-create',
   standalone: true,
-  imports: [ReactiveFormsModule, SuccessComponent, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    SuccessComponent,
+    CommonModule,
+    CKEditorModule,
+  ],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css',
 })
@@ -29,12 +58,106 @@ export class CreateComponent {
   submitted: boolean = false;
   mode: boolean = true;
 
+  categories: string[] = [
+    'Administrativo y Clerical',
+    'Artes Creativas y Diseño',
+    'Bienes Raíces',
+    'Ciencia e Investigación',
+    'Consultoría',
+    'Contabilidad y Finanzas',
+    'Educación',
+    'Hospitalidad y Turismo',
+    'Ingeniería',
+    'Legal',
+    'Manufactura y Producción',
+    'Marketing y Publicidad',
+    'Recursos Humanos',
+    'Retail y Ventas',
+    'Salud y Medicina',
+    'Servicio al Cliente',
+    'Sin Fines de Lucro y Servicios Sociales',
+    'Tecnologías de la Información (TI)',
+    'Transporte y Logística',
+    'Ventas',
+  ];
+
+  public Editor = ClassicEditor;
+  public editorConfig: EditorConfig = {
+    toolbar: {
+      items: [
+        'undo',
+        'redo',
+        '|',
+        'selectAll',
+        '|',
+        'fontColor',
+        '|',
+        'bold',
+        'italic',
+        'underline',
+        '|',
+        'link',
+        'insertImageViaUrl',
+        '|',
+        'bulletedList',
+        'numberedList',
+        '|',
+        'accessibilityHelp',
+      ],
+      shouldNotGroupWhenFull: false,
+    },
+    plugins: [
+      AccessibilityHelp,
+      AutoImage,
+      Autosave,
+      Bold,
+      Essentials,
+      FontColor,
+      GeneralHtmlSupport,
+      ImageBlock,
+      ImageInsertViaUrl,
+      ImageToolbar,
+      Italic,
+      Link,
+      List,
+      Paragraph,
+      SelectAll,
+      Underline,
+      Undo,
+    ],
+    htmlSupport: {
+      allow: [
+        {
+          name: /^.*$/,
+          styles: true,
+          attributes: true,
+          classes: true,
+        },
+      ],
+    },
+    image: {
+      toolbar: ['imageTextAlternative'],
+    },
+    link: {
+      addTargetToExternalLinks: true,
+      defaultProtocol: 'https://',
+      decorators: {
+        toggleDownloadable: {
+          mode: 'manual',
+          label: 'Downloadable',
+          attributes: {
+            download: 'file',
+          },
+        },
+      },
+    },
+  };
+
   eventForm = new FormGroup({
     title: new FormControl('', Validators.required),
     subtitle: new FormControl(''),
     year: new FormControl(2024, Validators.required),
     description: new FormControl('', Validators.required),
-    url: new FormControl(''),
     picture: new FormControl('/iwf-screenshot.webp'),
     category: new FormControl('', Validators.required),
   });
