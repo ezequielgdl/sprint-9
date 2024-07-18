@@ -28,10 +28,6 @@
 >
   <h2 class="text-2xl font-bold mb-4">MIEMBROS</h2>
   <div class="flex flex-col">
-    <label>Categoría</label>
-    <!-- Insert chips material angular -->
-  </div>
-  <div class="flex flex-col">
     <label for="name" class="mb-2 font-semibold text-gray-700">Nombre:</label>
     <input
       id="name"
@@ -41,7 +37,7 @@
     />
     @if(memberForm.get('name')?.invalid && (submitted ||
     memberForm.get('name')?.touched)){
-    <div class="text-red-600 text-sm">Nombre es requerido.</div>
+    <div class="text-red-600 text-sm">Este campo es requerido.</div>
     }
   </div>
   <div class="flex flex-col">
@@ -55,8 +51,12 @@
     ></textarea>
     @if(memberForm.get('title')?.invalid && (submitted ||
     memberForm.get('title')?.touched)){
-    <div class="text-red-600 text-sm">Título es requerido.</div>
+    <div class="text-red-600 text-sm">Este campo es requerido.</div>
     }
+  </div>
+  <div class="flex flex-col">
+    <label>Categoría:</label>
+    <app-multi-select formControlName="category"></app-multi-select>
   </div>
   <div class="flex flex-col">
     <label for="linkedin" class="mb-2 font-semibold text-gray-700"
@@ -92,7 +92,7 @@
     </select>
     @if(memberForm.get('role')?.invalid && (submitted ||
     memberForm.get('role')?.touched)){
-    <div class="text-red-600 text-sm">Categoría es requerida.</div>
+    <div class="text-red-600 text-sm">Este campo es requerido.</div>
     }
   </div>
   <div class="flex justify-end">

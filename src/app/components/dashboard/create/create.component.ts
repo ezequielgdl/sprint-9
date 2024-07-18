@@ -33,6 +33,7 @@ import {
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import 'ckeditor5/ckeditor5.css';
+import { MultiSelectComponent } from '../multiselect/multiselect.component';
 
 @Component({
   selector: 'app-create',
@@ -42,6 +43,7 @@ import 'ckeditor5/ckeditor5.css';
     SuccessComponent,
     CommonModule,
     CKEditorModule,
+    MultiSelectComponent,
   ],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css',
@@ -57,29 +59,6 @@ export class CreateComponent {
   creating: boolean = false;
   submitted: boolean = false;
   mode: boolean = true;
-
-  categories: string[] = [
-    'Administrativo y Clerical',
-    'Artes Creativas y Diseño',
-    'Bienes Raíces',
-    'Ciencia e Investigación',
-    'Consultoría',
-    'Contabilidad y Finanzas',
-    'Educación',
-    'Hospitalidad y Turismo',
-    'Ingeniería',
-    'Legal',
-    'Manufactura y Producción',
-    'Marketing y Publicidad',
-    'Recursos Humanos',
-    'Retail y Ventas',
-    'Salud y Medicina',
-    'Servicio al Cliente',
-    'Sin Fines de Lucro y Servicios Sociales',
-    'Tecnologías de la Información (TI)',
-    'Transporte y Logística',
-    'Ventas',
-  ];
 
   public Editor = ClassicEditor;
   public editorConfig: EditorConfig = {

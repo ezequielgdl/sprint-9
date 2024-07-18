@@ -26,7 +26,7 @@
       />
       @if(memberForm.get('name')?.invalid && (memberForm.get('name')?.dirty ||
       memberForm.get('name')?.touched)){
-      <div class="text-red-600 text-sm">Nombre es requerido.</div>
+      <div class="text-red-600 text-sm">Este campo es requerido.</div>
       }
     </div>
     <div class="flex flex-col">
@@ -42,8 +42,14 @@
       ></textarea>
       @if(memberForm.get('title')?.invalid && (memberForm.get('title')?.dirty ||
       memberForm.get('title')?.touched)){
-      <div class="text-red-600 text-sm">Título es requerido.</div>
+      <div class="text-red-600 text-sm">Este campo es requerido.</div>
       }
+    </div>
+    <div class="flex flex-col">
+      <label for="category" class="mb-2 font-semibold text-gray-700"
+        >Categoría:</label
+      >
+      <app-multi-select formControlName="category"></app-multi-select>
     </div>
     <div class="flex flex-col">
       <label for="linkedin" class="mb-2 font-semibold text-gray-700"
@@ -69,9 +75,7 @@
       />
     </div>
     <div class="flex flex-col">
-      <label for="role" class="mb-2 font-semibold text-gray-700"
-        >Categoría:</label
-      >
+      <label for="role" class="mb-2 font-semibold text-gray-700">Rol:</label>
       <select
         id="role"
         formControlName="role"
@@ -82,7 +86,7 @@
       </select>
       @if(memberForm.get('role')?.invalid && (memberForm.get('role')?.dirty ||
       memberForm.get('role')?.touched)){
-      <div class="text-red-600 text-sm">Categoría es requerida.</div>
+      <div class="text-red-600 text-sm">Este campo es requerido.</div>
       }
     </div>
     <div class="flex justify-end items-center">

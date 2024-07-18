@@ -9,11 +9,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { SuccessComponent } from '../success/success.component';
+import { MultiSelectComponent } from '../multiselect/multiselect.component';
 
 @Component({
   selector: 'app-update',
   standalone: true,
-  imports: [ReactiveFormsModule, SuccessComponent],
+  imports: [ReactiveFormsModule, SuccessComponent, MultiSelectComponent],
   templateUrl: './update.component.html',
   styleUrl: './update.component.css',
 })
