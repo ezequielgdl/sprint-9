@@ -1,6 +1,6 @@
-<nav class="bg-white shadow-lg">
+<nav class="bg-white shadow-lg py-2">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-    <div class="relative flex items-center justify-between h-20">
+    <div class="relative flex items-center justify-around h-20">
       <div class="flex-shrink-0">
         <img
           routerLink="/"
@@ -9,39 +9,36 @@
           alt="Logo"
         />
       </div>
-      <div class="flex-1 flex justify-center items-center">
-        <div class="hidden sm:block">
-          <div class="flex space-x-4">
+      <div class="flex-1 flex justify-end items-center">
+        <div class="hidden sm:block text-end">
+          <button routerLink="/contact" class="btn-primary-light">
+            CONTACTO
+          </button>
+          <div class="flex space-x-4 items-center">
             <a
               routerLink="/iwf"
-              class="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
-              >IWF Argentina</a
+              class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md"
+              >IWF ARGENTINA</a
             >
             <a
               routerLink="/actividades"
-              class="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
-              >Actividades</a
+              class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md"
+              >ACTIVIDADES</a
             >
             <a
               routerLink="/noticias"
-              class="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
-              >Noticias</a
+              class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md"
+              >NOTICIAS</a
             >
             <a
               routerLink="/trayectoria"
-              class="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
-              >Trayectoria</a
+              class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md"
+              >TRAYECTORIA</a
             >
           </div>
         </div>
       </div>
       <div class="flex items-center">
-        <button
-          routerLink="/contact"
-          class="bg-orange-700 text-white px-3 py-2 rounded-md font-medium"
-        >
-          Contacto
-        </button>
         <button
           type="button"
           (click)="toggleMenu()"
@@ -92,23 +89,23 @@
     <div class="px-2 pt-2 pb-3 space-y-1">
       <a
         routerLink="/iwf"
-        class="text-gray-700 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-        >IWF Argentina</a
+        class="hover:text-white block px-3 py-2 rounded-md text-base"
+        >IWF ARGENTINA</a
       >
       <a
         routerLink="/actividades"
-        class="text-gray-700 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-        >Actividades</a
+        class="hover:text-white block px-3 py-2 rounded-md text-base"
+        >ACTIVIDADES</a
       >
       <a
         routerLink="/noticias"
-        class="text-gray-700 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-        >Noticias</a
+        class="hover:text-white block px-3 py-2 rounded-md text-base"
+        >NOTICIAS</a
       >
       <a
         routerLink="/trayectoria"
-        class="text-gray-700 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-        >Trayectoria</a
+        class="hover:text-white block px-3 py-2 rounded-md text-base"
+        >TRAYECTORIA</a
       >
     </div>
   </div>
