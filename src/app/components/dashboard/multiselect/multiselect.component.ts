@@ -16,17 +16,17 @@ import { CommonModule } from '@angular/common';
       <button
         type="button"
         (click)="toggleDropdown(); $event.stopPropagation()"
-        class="bg-white border rounded p-2 w-full text-left"
+        class="bg-whiteiw border rounded p-2 w-full text-left"
       >
         <ng-container *ngIf="selectedItems.length > 0; else defaultText">
           <span
             *ngFor="let item of selectedItems; let i = index"
-            class="inline-block bg-orange-700 text-white rounded-full px-2 py-1 mr-1 mb-1"
+            class="inline-block bg-orangeiw text-whiteiw rounded-full px-2 py-1 mr-1 mb-1"
           >
             {{ item }}
             <button type="button" class="ml-1" (click)="removeItem(item)">
               <svg
-                class="w-3 h-3 fill-current text-white"
+                class="w-3 h-3 fill-current text-whiteiw"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -43,7 +43,7 @@ import { CommonModule } from '@angular/common';
       <ul
         (click)="$event.stopPropagation()"
         *ngIf="isOpen"
-        class="absolute bg-white border rounded mt-2 w-full max-h-60 overflow-auto z-10"
+        class="absolute bg-whiteiw border rounded mt-2 w-full max-h-60 overflow-auto z-10"
       >
         <li>
           <input
@@ -56,7 +56,7 @@ import { CommonModule } from '@angular/common';
         </li>
         <li
           *ngFor="let option of filteredOptions"
-          class="p-2 hover:bg-gray-100"
+          class="p-2 hover:bg-pasteliw"
         >
           <label class="flex items-center">
             <input

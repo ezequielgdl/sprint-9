@@ -2,7 +2,7 @@
   class="flex flex-wrap justify-between items-center p-4 mb-12 bg-white shadow-md"
 >
   <h1
-    class="text-center md:text-xl font-bold text-orange-500 flex-1 md:flex-none"
+    class="text-center md:text-xl font-bold text-orangeiw flex-1 md:flex-none"
   >
     Panel de Control
   </h1>
@@ -10,36 +10,36 @@
     class="flex flex-wrap space-x-4 mt-2 md:mt-0 flex-1 md:flex-none justify-center md:justify-start"
   >
     <button
-      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      class="text-sm hover:underline hover:text-orangeiw focus:outline-none"
       [ngClass]="{
-        'font-semibold underline text-orange-600': status === 'members'
+        'font-semibold underline text-orangeiw': status === 'members'
       }"
       (click)="onStatusChange('members')"
     >
       Miembros
     </button>
     <button
-      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      class="text-sm hover:underline hover:text-orangeiw focus:outline-none"
       [ngClass]="{
-        'font-semibold underline text-orange-600': status === 'actividades'
+        'font-semibold underline text-orangeiw': status === 'actividades'
       }"
       (click)="onStatusChange('actividades')"
     >
       Actividades
     </button>
     <button
-      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      class="text-sm hover:underline hover:text-orangeiw focus:outline-none"
       [ngClass]="{
-        'font-semibold underline text-orange-600': status === 'noticias'
+        'font-semibold underline text-orangeiw': status === 'noticias'
       }"
       (click)="onStatusChange('noticias')"
     >
       Noticias
     </button>
     <button
-      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      class="text-sm hover:underline hover:text-orangeiw focus:outline-none"
       [ngClass]="{
-        'font-semibold underline text-orange-600': status === 'trayectoria'
+        'font-semibold underline text-orangeiw': status === 'trayectoria'
       }"
       (click)="onStatusChange('trayectoria')"
     >
@@ -50,9 +50,9 @@
     class="flex flex-wrap space-x-4 mt-2 md:mt-0 flex-1 md:flex-none justify-center md:justify-end"
   >
     <button
-      class="flex items-center space-x-1 text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      class="flex items-center space-x-1 text-sm hover:underline hover:text-orangeiw focus:outline-none"
       [ngClass]="{
-        'font-semibold underline text-orange-600': status === 'create'
+        'font-semibold underline text-orangeiw': status === 'create'
       }"
       (click)="onStatusChange('create')"
     >
@@ -60,7 +60,7 @@
       <i class="bi bi-plus-circle-fill"></i>
     </button>
     <button
-      class="text-sm text-gray-700 hover:underline hover:text-orange-600 focus:outline-none"
+      class="text-sm hover:underline hover:text-orangeiw focus:outline-none"
       (click)="onSignOut()"
     >
       Cerrar Sesión

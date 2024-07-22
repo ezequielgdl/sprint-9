@@ -1,7 +1,7 @@
 <section class="m-12">
   <button
     type="submit"
-    class="bg-orange-500 text-white flex items-center space-x-1 py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
+    class="bg-orangeiw text-white flex items-center space-x-1 py-2 px-4 rounded-md hover:bg-orangeiw focus:outline-none focus:ring-2 focus:ring-orange-500"
     (click)="navigateBack()"
   >
     <i class="bi bi-arrow-left-circle-fill"></i><span>Dashboard</span>
@@ -23,7 +23,7 @@
       <select
         id="category"
         formControlName="category"
-        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
       >
         <option value="trayectoria">Trayectoria</option>
         <option value="noticias">Noticias</option>
@@ -42,7 +42,7 @@
         id="title"
         type="text"
         formControlName="title"
-        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
       />
       @if(eventForm.get('title')?.invalid && (eventForm.get('title')?.dirty ||
       eventForm.get('title')?.touched)){
@@ -107,7 +107,7 @@
     <div class="flex justify-end">
       <button
         type="submit"
-        class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
+        class="bg-orangeiw text-white py-2 px-4 rounded-md hover:bg-orangeiw focus:outline-none focus:ring-2 focus:ring-orange-500"
       >
         Actualizar Evento
       </button>

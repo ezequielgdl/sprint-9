@@ -2,22 +2,14 @@
   class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
   *ngIf="show"
 >
-  <div class="bg-white rounded-lg p-6 shadow-lg w-11/12 max-w-md">
+  <div class="rounded-lg p-6 shadow-lg w-11/12 max-w-md bg-whiteiw">
     <div class="flex justify-between items-center">
-      <h2 class="text-xl font-bold text-orange-600">Éxito!</h2>
-      <button
-        class="text-orange-600 hover:text-orange-700"
-        (click)="closeModal()"
-      >
+      <h2 class="text-xl font-bold text-orangeiw">Éxito!</h2>
+      <button class="text-orangeiw hover:text-orangeiw" (click)="closeModal()">
         &times;
       </button>
     </div>
     <p class="mt-4 text-gray-700">{{ message }}</p>
-    <button
-      class="mt-6 w-full bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600"
-      (click)="closeModal()"
-    >
-      OK
-    </button>
+    <button class="mt-6 btn-primary-light" (click)="closeModal()">OK</button>
   </div>
 </div>

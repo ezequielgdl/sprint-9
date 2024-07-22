@@ -1,10 +1,6 @@
 <section class="m-12">
-  <button
-    type="submit"
-    class="bg-orange-500 text-white flex items-center space-x-1 py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
-    (click)="navigateBack()"
-  >
-    <i class="bi bi-arrow-left-circle-fill"></i><span>Dashboard</span>
+  <button type="submit" class="btn-primary-light" (click)="navigateBack()">
+    <i class="bi bi-arrow-left-circle-fill"></i><span> Dashboard</span>
   </button>
   @if (data && data.length === 0) {
   <p>Este miembro no existe.</p>
@@ -71,7 +67,7 @@
         type="file"
         (change)="onFileSelected($event)"
         formControlName="avatar"
-        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
       />
     </div>
     <div class="flex flex-col">
@@ -79,7 +75,7 @@
       <select
         id="role"
         formControlName="role"
-        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
       >
         <option value="socias">Socias</option>
         <option value="autoridades">Autoridades</option>
@@ -93,11 +89,7 @@
       @if (updating) {
       <div>Actualizando...</div>
       } @else {
-      <button
-        type="submit"
-        [disabled]="updating"
-        class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
-      >
+      <button type="submit" [disabled]="updating" class="btn-primary-light">
         Actualizar Miembro</button
       >}
     </div>
