@@ -22,3 +22,7 @@ body {
 .btn-primary-light {
   @apply bg-orangeiw text-whiteiw py-1 px-6 rounded-full text-sm hover:bg-blueiw my-2;
 }
+
+.hover-underline {
+  @apply hover:decoration-orangeiw hover:underline hover:underline-offset-4;
+}
