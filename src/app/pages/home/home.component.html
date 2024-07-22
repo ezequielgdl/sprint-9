@@ -1,6 +1,6 @@
 <main class="scroll-smooth">
   <app-hero></app-hero>
-  <section class="flex flex-col items-center justify-around">
+  <section class="flex flex-col items-center justify-around min-h-screen">
     <div class="flex flex-col items-center">
       <h2 class="text-xl md:text-2xl border-b-2 border-orangeiw my-12">
         NUESTRA MISIÓN
@@ -12,58 +12,72 @@
         actividades.
       </p>
     </div>
-    <div class="container mx-auto px-4 py-8">
-      <div class="flex flex-wrap lg:flex-nowrap justify-center gap-4">
-        <div class="lg:basis-1/3">
+    <div class="container mx-auto px-4 py-8 lg:w-2/3">
+      <div
+        class="flex flex-wrap lg:flex-nowrap justify-center gap-12 font-serif text-2xl text-center"
+      >
+        <div class="basis-1/2 lg:basis-1/3 space-y-4">
           <img
             src="home-1.png"
             alt="Image 1"
             class="w-full h-auto object-cover max-w-[612px] rounded-t-full"
           />
+          <p>Conferencias</p>
+          <div class="w-full h-1 bg-orangeiw"></div>
         </div>
-        <div class="lg:basis-1/3">
+        <div class="basis-1/2 lg:basis-1/3 space-y-4">
           <img
             src="home-2.jpg"
             alt="Image 2"
             class="w-full h-auto object-cover max-w-[612px] rounded-t-full"
           />
+          <p>Desarrollo</p>
+          <div class="w-full h-1 bg-orangeiw"></div>
         </div>
-        <div class="lg:basis-1/3">
+        <div class="basis-1/2 lg:basis-1/3 space-y-4">
           <img
             src="home-3.png"
             alt="Image 3"
             class="w-full h-auto object-cover max-w-[612px] rounded-t-full"
           />
+          <p>Exhibiciones</p>
+          <div class="w-full h-1 bg-orangeiw"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="flex flex-col justify-around items-center">
-    <img class="max-w-full h-auto" src="/iwforum2.png" alt="IWForum" />
-    <h3
-      class="my-6 text-2xl md:text-3xl border-b-2 font-semibold border-orangeiw"
+  <section class="relative bg-orangeiw">
+    <img src="/home-4.jpg" alt="" class="h-full" />
+    <div
+      class="lg:absolute lg:top-0 lg:right-0 lg:w-1/2 bg-pasteliw flex justify-between"
     >
-      NUESTROS VALORES
-    </h3>
-    <ul class="py-5 px-12 space-y-3 list-disc text-lg md:text-2xl">
-      <li>
-        Enfatizar el rol del <strong>liderazgo</strong> femenino (pasado,
-        presente y futuro).
-      </li>
-      <li><strong>Respetar</strong> distintos puntos de vista.</li>
-      <li>Compartir conocimientos e ideas.</li>
-      <li>
-        Respaldar una red global, nacional y local de
-        <strong>mujeres líderes</strong>.
-      </li>
-      <li>
-        Participar del crecimiento de las generaciones de mujeres líderes
-        <strong>futuras</strong>.
-      </li>
-    </ul>
-    <button (click)="navigateTo()" class="btn-primary-light">
-      CONOCER MÁS
-    </button>
+      <div class="flex flex-col p-8 w-full justify-evenly space-y-8">
+        <h3 class="font-semibold tracking-wider">NUESTROS VALORES</h3>
+        <ul class="space-y-3 list-disc text-sm lg:text-md">
+          <li>
+            Enfatizar el rol del <strong>liderazgo</strong> femenino (pasado,
+            presente y futuro).
+          </li>
+          <li><strong>Respetar</strong> distintos puntos de vista.</li>
+          <li>Compartir conocimientos e ideas.</li>
+          <li>
+            Respaldar una red global, nacional y local de
+            <strong>mujeres líderes</strong>.
+          </li>
+          <li>
+            Participar del crecimiento de las generaciones de mujeres líderes
+            <strong>futuras</strong>.
+          </li>
+        </ul>
+        <button
+          (click)="navigateTo()"
+          class="text-start text-md hover:font-bold"
+        >
+          CONOCER MÁS
+          <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
   </section>
 </main>
