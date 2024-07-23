@@ -129,7 +129,7 @@ export class UpdateEventComponent {
   eventForm = new FormGroup({
     title: new FormControl('', Validators.required),
     subtitle: new FormControl(''),
-    year: new FormControl(2024, Validators.required),
+    date: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     url: new FormControl(''),
     picture: new FormControl('https://placehold.co/600x400/orange/white'),
@@ -151,7 +151,7 @@ export class UpdateEventComponent {
       this.eventForm.patchValue({
         title: this.data[0].title,
         subtitle: this.data[0].subtitle,
-        year: this.data[0].year,
+        date: this.data[0].date,
         description: this.data[0].description,
         url: this.data[0].url,
         picture: null,

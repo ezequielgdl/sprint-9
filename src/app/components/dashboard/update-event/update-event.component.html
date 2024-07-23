@@ -73,15 +73,15 @@
       />
     </div>
     <div class="flex flex-col">
-      <label for="year" class="mb-2 font-semibold text-gray-700">Año:</label>
+      <label for="date" class="mb-2 font-semibold text-gray-700">Año:</label>
       <input
-        id="year"
-        type="number"
-        formControlName="year"
+        id="date"
+        type="date"
+        formControlName="date"
         class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
       />
-      @if(eventForm.get('year')?.invalid && (eventForm.get('year')?.dirty ||
-      eventForm.get('year')?.touched)){
+      @if(eventForm.get('date')?.invalid && (eventForm.get('date')?.dirty ||
+      eventForm.get('date')?.touched)){
       <div class="text-red-600 text-sm">Categoría es requerida.</div>
       }
     </div>

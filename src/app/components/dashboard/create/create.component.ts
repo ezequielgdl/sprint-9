@@ -135,7 +135,7 @@ export class CreateComponent {
   eventForm = new FormGroup({
     title: new FormControl('', Validators.required),
     subtitle: new FormControl(''),
-    year: new FormControl(2024, Validators.required),
+    date: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     picture: new FormControl('/iwf-screenshot.webp'),
     category: new FormControl('', Validators.required),

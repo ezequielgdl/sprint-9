@@ -11,14 +11,14 @@
     </div>
     } @if (!isLoading) {@for (evento of eventos; track $index) {
     <div class="flex items-center">
-      <div class="m-5">{{ evento.year }}</div>
+      <div class="m-5">{{ evento.date.substring(0, 4) }}</div>
       <div
         class="bg-white border-l-4 border-orangeiw shadow-lg rounded-lg p-6 transition duration-300 hover:shadow-2xl w-full"
       >
         <h6 class="text-lg font-semibold mb-1 text-orangeiw">
           {{ evento.title.toUpperCase() }}
         </h6>
-        <p class="text-gray-600">{{ evento.description }}</p>
+        <p [innerHTML]="evento.description" class="text-gray-600"></p>
       </div>
     </div>
     }}

@@ -23,6 +23,7 @@ export class NoticiasComponent {
   async ngOnInit() {
     try {
       this.noticias = await this.supabaseService.getEvents('noticias');
+      this.noticias.sort((a, b) => b.date.localeCompare(a.date));
     } catch (error) {
       console.error(error);
     } finally {

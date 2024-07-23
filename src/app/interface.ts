@@ -10,7 +10,7 @@ export interface Member {
 export interface Evento {
   title: string;
   subtitle?: string;
-  year?: number;
+  date?: string;
   description: string;
   picture?: string;
   category: string;

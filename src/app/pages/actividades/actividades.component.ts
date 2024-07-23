@@ -23,6 +23,7 @@ export class ActividadesComponent {
   async ngOnInit() {
     try {
       this.actividades = await this.supabaseService.getEvents('actividades');
+      this.actividades.sort((a, b) => b.date.localeCompare(a.date));
     } catch (error) {
       console.error(error);
     } finally {
