@@ -11,7 +11,8 @@
 </div>
 
 <section class="flex flex-wrap justify-center gap-6 p-4">
-  @for (member of search(); track $index) { @if (member.role === 'socias') {
+  @if (isLoading) {<app-loading></app-loading>} @if (!isLoading) { @for (member
+  of search(); track $index) { @if (member.role === 'socias') {
   <div
     class="bg-white border-l-4 border-orangeiw shadow-lg rounded-lg p-6 transition duration-300 hover:shadow-2xl w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.333%-2rem)] lg:w-[calc(25%-1.5rem)]"
   >
@@ -36,5 +37,5 @@
       </svg> </a
     >}
   </div>
-  } }
+  } }}
 </section>
