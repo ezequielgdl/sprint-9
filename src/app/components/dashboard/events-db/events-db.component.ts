@@ -48,6 +48,7 @@ export class EventsDBComponent {
   }
 
   search() {
+    this.sort('date');
     if (!this.searchTerm.trim()) {
       return this.events;
     }
