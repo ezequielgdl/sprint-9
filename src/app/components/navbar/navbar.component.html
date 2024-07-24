@@ -10,7 +10,7 @@
         />
       </div>
       <div class="flex-1 flex justify-end items-center">
-        <div class="hidden sm:block text-end">
+        <div class="hidden md:block text-end">
           <button routerLink="/contact" class="btn-primary-light">
             CONTACTO
           </button>
@@ -35,7 +35,7 @@
         <button
           type="button"
           (click)="toggleMenu()"
-          class="sm:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ml-3"
+          class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ml-3"
         >
           <span class="sr-only">Open main menu</span>
           <svg
@@ -75,7 +75,7 @@
 
   <!-- Mobile menu, show/hide based on menu state. -->
   <div
-    class="sm:hidden"
+    class="md:hidden"
     id="mobile-menu"
     [class]="{ block: isMenuOpen, hidden: !isMenuOpen }"
   >
@@ -100,6 +100,7 @@
         class="hover:text-white block px-3 py-2 rounded-md text-base"
         >TRAYECTORIA</a
       >
+      <button routerLink="/contact" class="btn-primary-light">CONTACTO</button>
     </div>
   </div>
 </nav>
