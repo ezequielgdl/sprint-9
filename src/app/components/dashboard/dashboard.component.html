@@ -54,6 +54,17 @@
       [ngClass]="{
         'font-semibold underline text-orangeiw': status === 'create'
       }"
+      (click)="onStatusChange('messages')"
+    >
+      <span>Mensajes</span>
+      <i class="bi bi-envelope"></i>
+    </button>
+
+    <button
+      class="flex items-center space-x-1 text-sm hover:underline hover:text-orangeiw focus:outline-none"
+      [ngClass]="{
+        'font-semibold underline text-orangeiw': status === 'create'
+      }"
       (click)="onStatusChange('create')"
     >
       <span>Crear</span>
@@ -85,4 +96,5 @@
   (memberCreated)="onMemberCreated()"
   (eventCreated)="onEventCreated()"
 ></app-create>
->}
+>} @if (status === 'messages') {
+<app-messages [contacts]="contacts"></app-messages> }

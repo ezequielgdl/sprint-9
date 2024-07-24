@@ -3,14 +3,21 @@ import { Router } from '@angular/router';
 import { SupabaseService } from '../../services/auth.service';
 import { MembersComponent } from './members/members.component';
 import { EventsDBComponent } from './events-db/events-db.component';
-import { Member } from '../../interface';
+import { Contact, Member } from '../../interface';
 import { CreateComponent } from './create/create.component';
 import { CommonModule } from '@angular/common';
+import { MessagesComponent } from './messages/messages.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MembersComponent, EventsDBComponent, CreateComponent, CommonModule],
+  imports: [
+    MembersComponent,
+    EventsDBComponent,
+    CreateComponent,
+    CommonModule,
+    MessagesComponent,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
@@ -19,6 +26,7 @@ export class DashboardComponent {
   trayectoria: any[] = [];
   noticias: any[] = [];
   actividades: any[] = [];
+  contacts: Contact[] = [];
   status: string = 'members';
   constructor(
     private supabaseService: SupabaseService,
@@ -34,6 +42,7 @@ export class DashboardComponent {
     this.trayectoria = await this.supabaseService.getEvents('trayectoria');
     this.noticias = await this.supabaseService.getEvents('noticias');
     this.actividades = await this.supabaseService.getEvents('actividades');
+    this.contacts = await this.supabaseService.getContacts();
   }
 
   async onSignOut() {

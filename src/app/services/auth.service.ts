@@ -17,6 +17,15 @@ export class SupabaseService {
 
   // CRUD
 
+  async getContacts() {
+    const { data, error } = await this.supabaseClient.from('contacts').select();
+    if (error) {
+      console.error('Error fetching contacts', error.message);
+      return [];
+    }
+    return data;
+  }
+
   async getMembers() {
     const { data, error } = await this.supabaseClient.from('members').select();
 

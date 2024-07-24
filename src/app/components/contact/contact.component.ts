@@ -7,15 +7,20 @@ import {
 } from '@angular/forms';
 import { SupabaseService } from '../../services/auth.service';
 import { Contact } from '../../interface';
+import { SuccessComponent } from '../dashboard/success/success.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, SuccessComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })
 export class ContactComponent {
+  creating: boolean = false;
+  submitted: boolean = false;
+  showSuccessModal: boolean = false;
+
   constructor(private supabaseService: SupabaseService) {}
   contactForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -26,12 +31,16 @@ export class ContactComponent {
   });
 
   async onSubmit() {
+    this.submitted = true;
     if (this.contactForm.valid) {
+      this.creating = true;
       const contact: Contact = this.contactForm.value as Contact;
-      const response = await this.supabaseService.createContact(contact);
-      console.log(response);
-      return response;
+      await this.supabaseService.createContact(contact);
+      this.contactForm.reset();
+    } else {
     }
-    return;
+    this.creating = false;
+    this.submitted = false;
+    this.showSuccessModal = true;
   }
 }

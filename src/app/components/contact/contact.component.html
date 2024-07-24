@@ -17,12 +17,20 @@
       type="text"
       formControlName="name"
     />
+    @if(contactForm.get('name')?.invalid && (submitted ||
+    contactForm.get('name')?.touched)){
+    <div class="text-purpleiw text-sm">Su nombre es requerido.</div>
+    }
     <label for="email">Email:</label>
     <input
       class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
       type="email"
       formControlName="email"
     />
+    @if(contactForm.get('email')?.invalid && (submitted ||
+    contactForm.get('email')?.touched)){
+    <div class="text-purpleiw text-sm">Su email es requerido.</div>
+    }
     <label for="phone">Teléfono:</label>
     <input
       class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -36,8 +44,22 @@
       rows="4"
       formControlName="message"
     ></textarea>
-    <button type="submit" class="md:w-40 btn-primary-light">
+    @if(contactForm.get('message')?.invalid && (submitted ||
+    contactForm.get('message')?.touched)){
+    <div class="text-purpleiw text-sm">El mensaje es requerido.</div>
+    }
+    <button
+      type="submit"
+      class="md:w-40 btn-primary-light"
+      [disabled]="creating"
+    >
       Enviar Mensaje
     </button>
   </form>
 </section>
+
+<app-success
+  [show]="showSuccessModal"
+  message="Gracias por su mensaje!"
+  (close)="showSuccessModal = false"
+></app-success>
