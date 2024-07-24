@@ -15,3 +15,11 @@ export interface Evento {
   picture?: string;
   category: string;
 }
+
+export interface Contact {
+  name: string;
+  email: string;
+  phone: number;
+  message: string;
+  verified: boolean;
+}

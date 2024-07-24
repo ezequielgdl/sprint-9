@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { SupabaseClient, User, createClient } from '@supabase/supabase-js';
 // import { environment } from '../../environments/environment';
-import { Evento, Member } from '../interface';
+import { Contact, Evento, Member } from '../interface';
 
 @Injectable({ providedIn: 'root' })
 export class SupabaseService {
@@ -127,6 +127,11 @@ export class SupabaseService {
       return error.message;
     }
     return data;
+  }
+
+  async createContact(contact: Contact) {
+    const response = await this.supabaseClient.from('contacts').insert(contact);
+    return response;
   }
 
   async createEvent(event: Evento) {
