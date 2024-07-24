@@ -23,6 +23,20 @@ module.exports = {
         serif: ["Adobe Caslon Pro", ...defaultTheme.fontFamily.sans],
         body: ["Helvetica Neue"],
       },
+      animation: {
+        "loop-scroll": "loop-scroll 20s linear infinite",
+        "loop-scroll-back": "loop-scroll-back 20s linear infinite",
+      },
+      keyframes: {
+        "loop-scroll": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(-100%)" },
+        },
+        "loop-scroll-back": {
+          from: { transform: "translateY(-100%)" },
+          to: { transform: "translateY(0)" },
+        },
+      },
     },
   },
   plugins: [],

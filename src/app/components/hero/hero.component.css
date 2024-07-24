@@ -26,7 +26,7 @@
 }
 
 .slide-animation {
-  animation: slide 8s ease-in-out infinite;
+  animation: slide 15s ease-in-out infinite;
   animation-fill-mode: backwards;
 }
 
