@@ -3,11 +3,12 @@ import { SupabaseService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { MultiSelectComponent } from '../../components/dashboard/multiselect/multiselect.component';
 import { LoadingComponent } from '../../components/loading/loading.component';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-socias',
   standalone: true,
-  imports: [FormsModule, LoadingComponent],
+  imports: [FormsModule, LoadingComponent, NgOptimizedImage],
   templateUrl: './socias.component.html',
   styleUrl: './socias.component.css',
 })
