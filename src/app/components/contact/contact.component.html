@@ -47,7 +47,14 @@
     @if(contactForm.get('message')?.invalid && (submitted ||
     contactForm.get('message')?.touched)){
     <div class="text-purpleiw text-sm">El mensaje es requerido.</div>
-    }
+    } @if (creating) {
+    <div>Enviando...</div>
+    } @else { @if(contactForm.invalid && submitted) {
+    <div class="text-purpleiw text-sm">
+      Por favor rellenar los campos necesarios.
+    </div>
+    }}
+
     <button
       type="submit"
       class="md:w-40 btn-primary-light"

@@ -25,7 +25,7 @@ export class ContactComponent {
   contactForm = new FormGroup({
     name: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl(0),
+    phone: new FormControl(),
     message: new FormControl('', Validators.required),
     viewed: new FormControl(false),
   });
@@ -36,11 +36,11 @@ export class ContactComponent {
       this.creating = true;
       const contact: Contact = this.contactForm.value as Contact;
       await this.supabaseService.createContact(contact);
+      this.creating = false;
+      this.submitted = false;
+      this.showSuccessModal = true;
       this.contactForm.reset();
     } else {
     }
-    this.creating = false;
-    this.submitted = false;
-    this.showSuccessModal = true;
   }
 }
