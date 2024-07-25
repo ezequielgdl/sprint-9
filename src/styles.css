@@ -20,7 +20,7 @@ body {
 }
 
 .btn-primary-light {
-  @apply bg-orangeiw text-whiteiw py-1 px-6 rounded-full text-md hover:bg-blueiw my-2;
+  @apply bg-orangeiw text-whiteiw py-1 px-6 rounded-full hover:bg-blueiw my-2;
 }
 
 .hover-underline {
