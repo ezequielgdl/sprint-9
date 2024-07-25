@@ -5,13 +5,20 @@
     class="relative flex lg:flex-row flex-col w-screen h-full flex-1 justify-evenly"
   >
     <div
-      class="w-full lg:w-1/2 flex flex-col items-center justify-center space-y-3"
+      class="w-full lg:w-1/2 flex flex-col items-center md:justify-center space-y-8"
     >
       <h1
         class="text-4xl md:text-5xl lg:text-6xl tracking-wide appear-animation my-6"
       >
         {{ text[index] }}
       </h1>
+      <img
+        ngSrc="/hero1.png"
+        width="789"
+        height="444"
+        alt=""
+        class="md:hidden"
+      />
       <div class="m-4 text-center">
         <h1 class="text-3xl md:text-4xl font-serif text-orangeiw">
           International Women's Forum

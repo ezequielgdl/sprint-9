@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { HeroComponent } from '../../components/hero/hero.component';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, HeroComponent],
+  imports: [RouterLink, HeroComponent, NgOptimizedImage],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
