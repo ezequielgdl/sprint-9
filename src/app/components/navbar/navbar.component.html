@@ -79,25 +79,29 @@
     id="mobile-menu"
     [class]="{ block: isMenuOpen, hidden: !isMenuOpen }"
   >
-    <div class="px-2 pt-2 pb-3 space-y-1">
+    <div class="px-2 py-4 space-y-1">
       <a
         routerLink="/iwf"
         class="hover:text-white block px-3 py-2 rounded-md text-base"
+        (click)="isMenuOpen = !isMenuOpen"
         >IWF ARGENTINA</a
       >
       <a
         routerLink="/actividades"
         class="hover:text-white block px-3 py-2 rounded-md text-base"
+        (click)="isMenuOpen = !isMenuOpen"
         >ACTIVIDADES</a
       >
       <a
         routerLink="/noticias"
         class="hover:text-white block px-3 py-2 rounded-md text-base"
+        (click)="isMenuOpen = !isMenuOpen"
         >NOTICIAS</a
       >
       <a
         routerLink="/trayectoria"
         class="hover:text-white block px-3 py-2 rounded-md text-base"
+        (click)="isMenuOpen = !isMenuOpen"
         >TRAYECTORIA</a
       >
       <span class="px-2">
