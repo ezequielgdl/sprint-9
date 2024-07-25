@@ -28,6 +28,7 @@ export class ContactComponent {
     phone: new FormControl(),
     message: new FormControl('', Validators.required),
     viewed: new FormControl(false),
+    sentDate: new FormControl(new Date()),
   });
 
   async onSubmit() {

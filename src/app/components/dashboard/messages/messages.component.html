@@ -40,23 +40,28 @@
       </thead>
       <tbody>
         @for (contact of contacts; track $index) {
-        <tr
-          class="border-t border-gray-200 cursor-pointer"
-          (click)="
-            selectedContactId = selectedContactId === $index ? null : $index
-          "
-        >
-          <td class="px-6 py-4 whitespace-nowrap">{{ contact.name }}</td>
+        <tr class="border-t border-gray-200 cursor-pointer">
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ contact.name }}
+          </td>
           <td class="px-6 py-4">{{ contact.email }}</td>
           <td class="px-6 py-4 whitespace-nowrap">
             {{ contact.phone }}
           </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            @if (!contact.verified) {
+          <td class="px-6 py-4 whitespace-nowrap" (click)="onRead(contact.id)">
+            @if (contact.viewed === false) {
             <span class="text-orangeiw"> NO </span>
             } @else {
-            <span class="text-orangeiw"> NO </span>
+            <span class="text-orangeiw"> SI </span>
             }
+          </td>
+          <td
+            class="text-orangeiw"
+            (click)="
+              selectedContactId = selectedContactId === $index ? null : $index
+            "
+          >
+            <i class="bi bi-caret-down-fill"></i>
           </td>
           <!-- <td class="px-6 py-4 whitespace-nowrap">
             <button

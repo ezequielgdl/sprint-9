@@ -13,4 +13,15 @@ export class MessagesComponent {
   @Input()
   contacts!: Contact[];
   selectedContactId: number | null = null;
+
+  constructor(private supabaseService: SupabaseService) {}
+
+  async onRead(id: string | undefined) {
+    const updatedData = await this.supabaseService.toggleViewed(id);
+    if (updatedData) {
+      this.contacts = this.contacts.map((contact) =>
+        contact.id === id ? { ...contact, viewed: !contact.viewed } : contact
+      );
+    }
+  }
 }

@@ -17,9 +17,11 @@ export interface Evento {
 }
 
 export interface Contact {
+  id?: string | undefined;
   name: string;
   email: string;
   phone: number;
   message: string;
-  verified: boolean;
+  viewed: boolean;
+  sentDate: Date;
 }

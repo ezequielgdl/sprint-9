@@ -103,11 +103,7 @@
       Por favor rellenar los campos necesarios.
     </div>
     }
-    <button
-      type="submit"
-      [disabled]="creating"
-      class="bg-orangeiw py-2 px-4 rounded-md hover:bg-orangeiw focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    >
+    <button type="submit" [disabled]="creating" class="btn-primary-light">
       Crear Miembro</button
     >}
   </div>
@@ -209,7 +205,7 @@
     <button
       type="submit"
       (ngSubmit)="onSubmitEvent()"
-      class="bg-orangeiw text-white py-2 px-4 rounded-md hover:bg-orangeiw focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      class="btn-primary-light"
     >
       Crear Evento</button
     >}

@@ -166,6 +166,35 @@ export class SupabaseService {
     return data;
   }
 
+  async toggleViewed(id: string | undefined) {
+    const { data: currentData, error: readError } = await this.supabaseClient
+      .from('contacts')
+      .select('viewed')
+      .eq('id', id)
+      .single();
+
+    if (readError) {
+      console.error('Error retrieving data', readError);
+      return readError.message;
+    }
+
+    const newViewedState = !currentData.viewed;
+
+    const { data: updatedData, error: updateError } = await this.supabaseClient
+      .from('contacts')
+      .update({ viewed: newViewedState })
+      .eq('id', id)
+      .select();
+
+    if (updateError) {
+      console.error('Error updating data', updateError);
+      return updateError.message;
+    }
+
+    console.log('Updated data:', updatedData);
+    return updatedData;
+  }
+
   async uploadImage(fileName: string, file: File, bucket: string) {
     const { data, error } = await this.supabaseClient.storage
       .from(bucket)
