@@ -2,12 +2,13 @@
   <h1 class="text-center m-6 font-semibold text-xl md:text-3xl text-orangeiw">
     SOCIAS
   </h1>
-  <input
+  <!-- <input
     class="lg:w-1/2 w-2/3 mb-12 p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
     type="text"
     placeholder="Buscar por categoría..."
     [(ngModel)]="searchTerm"
-  />
+  /> -->
+  <app-multi-select class="w-2/3" [(ngModel)]="searchTerm"></app-multi-select>
 </div>
 
 <section class="flex flex-wrap justify-center gap-6 p-4">

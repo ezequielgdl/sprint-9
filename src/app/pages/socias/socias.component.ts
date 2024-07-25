@@ -8,13 +8,18 @@ import { NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'app-socias',
   standalone: true,
-  imports: [FormsModule, LoadingComponent, NgOptimizedImage],
+  imports: [
+    FormsModule,
+    LoadingComponent,
+    NgOptimizedImage,
+    MultiSelectComponent,
+  ],
   templateUrl: './socias.component.html',
   styleUrl: './socias.component.css',
 })
 export class SociasComponent {
   members: any[] = [];
-  searchTerm: string = '';
+  searchTerm: string[] = [];
   isLoading: boolean = true;
 
   constructor(private supabaseService: SupabaseService) {}
@@ -30,14 +35,16 @@ export class SociasComponent {
   }
 
   search() {
-    if (!this.searchTerm.trim()) {
+    if (!this.searchTerm || this.searchTerm.length === 0) {
       return this.members;
     }
     return this.members.filter(
       (member) =>
         member.category &&
         member.category.some((cat: string) =>
-          cat.toLowerCase().includes(this.searchTerm.toLowerCase())
+          this.searchTerm.some((term: string) =>
+            cat.toLowerCase().includes(term.toLowerCase())
+          )
         )
     );
   }
