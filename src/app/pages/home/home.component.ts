@@ -20,7 +20,7 @@ export class HomeComponent {
       });
   }
 
-  navigateTo() {
-    this.router.navigate(['iwf']);
+  navigateTo(route: string) {
+    this.router.navigate([`${route}`]);
   }
 }
