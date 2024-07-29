@@ -23,6 +23,10 @@ body {
   @apply bg-orangeiw text-whiteiw py-1 px-6 rounded-full hover:bg-blueiw my-2;
 }
 
+.btn-primary-disabled {
+  @apply bg-orangeiw/10 text-whiteiw py-1 px-6 rounded-full my-2;
+}
+
 .hover-underline {
   @apply hover:decoration-orangeiw hover:underline hover:underline-offset-4;
 }
