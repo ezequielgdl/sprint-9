@@ -39,7 +39,9 @@
         </tr>
       </thead>
       <tbody>
-        @for (contact of contacts; track $index) {
+        @if (contacts.length === 0) {
+        <td colspan="5" class="px-6 py-4">No hay mensajes...</td>
+        } @for (contact of contacts; track $index) {
         <tr class="border-t border-gray-200 cursor-pointer">
           <td class="px-6 py-4 whitespace-nowrap">
             {{ contact.name }}
