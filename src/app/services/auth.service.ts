@@ -17,13 +17,30 @@ export class SupabaseService {
 
   // CRUD
 
-  async getContacts() {
-    const { data, error } = await this.supabaseClient.from('contacts').select();
+  async getContacts(offset: number) {
+    const { data, error } = await this.supabaseClient
+      .from('contacts')
+      .select()
+      .order('id', { ascending: false })
+      .range(offset, offset + 9);
     if (error) {
       console.error('Error fetching contacts', error.message);
       return [];
     }
     return data;
+  }
+
+  async getTotalCount() {
+    const { count, error } = await this.supabaseClient
+      .from('contacts')
+      .select('*', { count: 'exact', head: true });
+
+    if (error) {
+      console.error('Error fetching total count', error.message);
+      return 0;
+    }
+
+    return count;
   }
 
   async getMembers() {

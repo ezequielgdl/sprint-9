@@ -27,6 +27,7 @@ export class DashboardComponent {
   noticias: any[] = [];
   actividades: any[] = [];
   contacts: Contact[] = [];
+  totalContacts: number | null = 0;
   status: string = 'members';
   constructor(
     private supabaseService: SupabaseService,
@@ -42,7 +43,12 @@ export class DashboardComponent {
     this.trayectoria = await this.supabaseService.getEvents('trayectoria');
     this.noticias = await this.supabaseService.getEvents('noticias');
     this.actividades = await this.supabaseService.getEvents('actividades');
-    this.contacts = await this.supabaseService.getContacts();
+    this.contacts = await this.supabaseService.getContacts(0);
+    this.totalContacts = await this.supabaseService.getTotalCount();
+  }
+
+  async onOffsetChange(offset: number) {
+    this.contacts = await this.supabaseService.getContacts(offset);
   }
 
   async onSignOut() {

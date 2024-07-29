@@ -97,4 +97,9 @@
   (eventCreated)="onEventCreated()"
 ></app-create>
 >} @if (status === 'messages') {
-<app-messages [contacts]="contacts"></app-messages> }
+<app-messages
+  [contacts]="contacts"
+  [totalContacts]="totalContacts"
+  (offsetChange)="onOffsetChange($event)"
+></app-messages>
+}

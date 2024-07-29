@@ -41,7 +41,7 @@
       <tbody>
         @if (contacts.length === 0) {
         <td colspan="5" class="px-6 py-4">No hay mensajes...</td>
-        } @for (contact of contacts; track $index) {
+        } @for (contact of contacts; track $index; let count = $count) {
         <tr class="border-t border-gray-200 cursor-pointer">
           <td class="px-6 py-4 whitespace-nowrap">
             {{ contact.name }}
@@ -82,5 +82,26 @@
         } }
       </tbody>
     </table>
+    <div class="my-4 text-end">
+      <div class="pagination-info">
+        {{ startIndex }} - {{ endIndex }} de {{ totalContacts }} mensajes.
+      </div>
+      <div class="space-x-2">
+        <button
+          class="btn-primary-light"
+          (click)="prevPage()"
+          [disabled]="currentPage === 0"
+        >
+          <i class="bi bi-caret-left"></i>
+        </button>
+        <button
+          class="btn-primary-light"
+          [disabled]="(currentPage + 1) * pageSize >= totalContacts!"
+          (click)="nextPage()"
+        >
+          <i class="bi bi-caret-right"></i>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
