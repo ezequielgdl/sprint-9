@@ -12,9 +12,9 @@ import { CommonModule } from '@angular/common';
 })
 export class MessagesComponent {
   @Input()
-  contacts!: Contact[];
+  contacts: Contact[] = [];
   @Input()
-  totalContacts!: number | null;
+  totalContacts: number | null = 0;
   @Output()
   offsetChange = new EventEmitter<number>();
 
