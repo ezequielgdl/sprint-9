@@ -1,10 +1,6 @@
 <section class="m-12">
-  <button
-    type="submit"
-    class="bg-orangeiw text-white flex items-center space-x-1 py-2 px-4 rounded-md hover:bg-orangeiw focus:outline-none focus:ring-2 focus:ring-orange-500"
-    (click)="navigateBack()"
-  >
-    <i class="bi bi-arrow-left-circle-fill"></i><span>Dashboard</span>
+  <button type="submit" class="btn-primary-light" (click)="navigateBack()">
+    <i class="bi bi-arrow-left-circle-fill"></i><span> Dashboard</span>
   </button>
   @if (data && data.length === 0) {
   <p>Este evento no existe</p>

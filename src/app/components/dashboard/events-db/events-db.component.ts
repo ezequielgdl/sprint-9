@@ -2,11 +2,12 @@ import { Component, Input } from '@angular/core';
 import { SupabaseService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { LoadingComponent } from '../../loading/loading.component';
 
 @Component({
   selector: 'app-events-db',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, LoadingComponent],
   templateUrl: './events-db.component.html',
   styleUrl: './events-db.component.css',
 })
@@ -15,6 +16,7 @@ export class EventsDBComponent {
   @Input() category!: string;
   order: boolean = true;
   searchTerm: string = '';
+  loading: boolean = false;
 
   constructor(
     private supabaseService: SupabaseService,
@@ -23,10 +25,13 @@ export class EventsDBComponent {
 
   async onDelete(table: string, id: number, bucket: string, column: string) {
     try {
+      this.loading = true;
       await this.supabaseService.delete(table, id, bucket, column);
       this.events = await this.supabaseService.getEvents(this.category);
     } catch (error) {
       console.error('Error deleting member:');
+    } finally {
+      this.loading = false;
     }
   }
 
@@ -48,7 +53,6 @@ export class EventsDBComponent {
   }
 
   search() {
-    this.sort('date');
     if (!this.searchTerm.trim()) {
       return this.events;
     }

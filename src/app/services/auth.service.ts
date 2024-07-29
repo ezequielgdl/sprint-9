@@ -44,7 +44,10 @@ export class SupabaseService {
   }
 
   async getMembers() {
-    const { data, error } = await this.supabaseClient.from('members').select();
+    const { data, error } = await this.supabaseClient
+      .from('members')
+      .select()
+      .order('name', { ascending: true });
 
     if (error) {
       console.error('Error fetching members:', error.message);
@@ -57,7 +60,8 @@ export class SupabaseService {
     const { data, error } = await this.supabaseClient
       .from('events')
       .select()
-      .eq('category', category);
+      .eq('category', category)
+      .order('date', { ascending: false });
 
     if (error) {
       console.error('Error fetching events', error.message);
