@@ -85,10 +85,6 @@ export class SupabaseService {
 
   async delete(table: string, id: number, bucket: string, column: string) {
     try {
-      console.log(
-        `Fetching record from table: ${table}, id: ${id}, column: ${column}`
-      );
-
       const { data: record, error } = await this.supabaseClient
         .from(table)
         .select(column)
@@ -105,14 +101,10 @@ export class SupabaseService {
         return { error: { message: `Record with ID ${id} not found.` } };
       }
 
-      console.log('Record fetched:', record);
-
       const url = (record as { [key: string]: any })[column];
       if (url) {
         const filename = url.split('/').pop();
         if (filename) {
-          console.log(`Deleting file: ${filename} from bucket: ${bucket}`);
-
           const { data: deleteData, error: deleteError } =
             await this.supabaseClient.storage.from(bucket).remove([filename]);
 
@@ -120,15 +112,9 @@ export class SupabaseService {
             console.error('Error deleting file:', deleteError.message);
             return { error: deleteError };
           }
-
-          console.log('File deleted:', deleteData);
         } else {
           console.error(`Failed to extract filename from URL: ${url}`);
         }
-      } else {
-        console.log(
-          `Column ${column} is empty in record, skipping file deletion.`
-        );
       }
 
       const { data: deleteRecord, error: deleteRecordError } =
@@ -139,7 +125,6 @@ export class SupabaseService {
         return { error: deleteRecordError };
       }
 
-      console.log('Record deleted:', deleteRecord);
       return { data: deleteRecord };
     } catch (err) {
       console.error('Unexpected error:', err);
@@ -212,7 +197,6 @@ export class SupabaseService {
       return updateError.message;
     }
 
-    console.log('Updated data:', updatedData);
     return updatedData;
   }
 
