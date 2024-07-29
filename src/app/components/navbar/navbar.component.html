@@ -105,7 +105,11 @@
         >TRAYECTORIA</a
       >
       <span class="px-2">
-        <button routerLink="/contact" class="btn-primary-light">
+        <button
+          routerLink="/contact"
+          class="btn-primary-light"
+          (click)="isMenuOpen = !isMenuOpen"
+        >
           CONTACTO
         </button></span
       >
