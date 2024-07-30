@@ -2,7 +2,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: ["./src/**/*.{html,ts}"],
+  content: ["./src/**/*.{html,ts}", "./node_modules/@ckeditor/**/*.{js,ts}"],
   theme: {
     colors: {
       orangeiw: "#E76503",

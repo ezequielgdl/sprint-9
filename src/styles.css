@@ -30,3 +30,10 @@ body {
 .hover-underline {
   @apply hover:decoration-orangeiw hover:underline hover:underline-offset-4;
 }
+
+.ck-editor__editable {
+  @apply text-base; /* Tailwind utility class for font size */
+  min-height: 200px; /* Ensure a minimum height */
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Ensure box-sizing is consistent */
+}
