@@ -12,8 +12,7 @@ import { LoadingComponent } from '../../loading/loading.component';
   styleUrl: './members.component.css',
 })
 export class MembersComponent {
-  @Input()
-  members!: any[];
+  members: any[] = [];
   order: boolean = true;
   searchTerm: string = '';
   loading: boolean = false;
@@ -22,6 +21,10 @@ export class MembersComponent {
     private supabaseService: SupabaseService,
     private router: Router
   ) {}
+
+  async ngOnInit() {
+    this.members = await this.supabaseService.getMembers();
+  }
 
   async onDelete(table: string, id: number, bucket: string, column: string) {
     try {

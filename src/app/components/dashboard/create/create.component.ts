@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  AfterViewInit,
+  AfterViewChecked,
+  ChangeDetectorRef,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -9,8 +16,8 @@ import { SupabaseService } from '../../../services/auth.service';
 import { Member, Evento } from '../../../interface';
 import { SuccessComponent } from '../success/success.component';
 import { CommonModule } from '@angular/common';
-import { MultiSelectComponent } from '../multiselect/multiselect.component';
 import { QuillModule } from 'ngx-quill';
+import { MultiSelectComponent } from '../multiselect/multiselect.component';
 
 @Component({
   selector: 'app-create',
@@ -19,32 +26,38 @@ import { QuillModule } from 'ngx-quill';
     ReactiveFormsModule,
     SuccessComponent,
     CommonModule,
-    MultiSelectComponent,
     QuillModule,
+    MultiSelectComponent,
   ],
   templateUrl: './create.component.html',
-  styleUrl: './create.component.css',
+  styleUrls: ['./create.component.css'],
 })
-export class CreateComponent {
+export class CreateComponent implements AfterViewInit, AfterViewChecked {
   @Output() memberCreated = new EventEmitter<void>();
   @Output() eventCreated = new EventEmitter<void>();
-  constructor(private supabaseService: SupabaseService) {}
+
+  mode: boolean = false;
   showSuccessModal: boolean = false;
   successMessage: string = '';
   selectedFile: File | null = null;
   selectedEventFile: File | null = null;
   creating: boolean = false;
   submitted: boolean = false;
-  mode: boolean = true;
+
+  constructor(
+    private supabaseService: SupabaseService,
+    private cdRef: ChangeDetectorRef
+  ) {}
 
   eventForm = new FormGroup({
     title: new FormControl('', Validators.required),
     subtitle: new FormControl(''),
     date: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
+    description: new FormControl(''), // Initialize with an empty string
     picture: new FormControl('/iwf-screenshot.webp'),
     category: new FormControl('', Validators.required),
   });
+
   memberForm = new FormGroup({
     name: new FormControl('', Validators.required),
     title: new FormControl('', Validators.required),
@@ -53,6 +66,23 @@ export class CreateComponent {
     linkedin: new FormControl(''),
     category: new FormControl([]),
   });
+
+  ngAfterViewInit() {
+    this.cdRef.detectChanges(); // Ensure change detection after the view has been initialized
+  }
+
+  ngAfterViewChecked() {
+    this.cdRef.detectChanges();
+  }
+
+  onToggleMode(newMode: boolean) {
+    this.mode = newMode;
+    if (this.mode) {
+      setTimeout(() => {
+        this.cdRef.detectChanges();
+      }, 0);
+    }
+  }
 
   async onSubmitMember() {
     this.submitted = true;

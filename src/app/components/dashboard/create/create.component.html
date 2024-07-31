@@ -3,209 +3,218 @@
   <button
     class="text-sm text-gray-700 hover:underline hover:text-orangeiw focus:outline-none"
     [ngClass]="{
-      'font-semibold underline text-orangeiw': mode === true
+      'font-semibold underline text-orangeiw': mode === false
     }"
-    (click)="mode = true"
+    (click)="onToggleMode(false)"
   >
-    EVENTOS
+    MIEMBRO
   </button>
   <button
     class="text-sm text-gray-700 hover:underline hover:text-orangeiw focus:outline-none"
     [ngClass]="{
-      'font-semibold underline text-orangeiw': mode === false
+      'font-semibold underline text-orangeiw': mode === true
     }"
-    (click)="mode = false"
+    (click)="onToggleMode(true)"
   >
-    MIEMBROS
+    EVENTO
   </button>
 </div>
 @if (!mode) {
-<form
-  action=""
-  [formGroup]="memberForm"
-  (ngSubmit)="onSubmitMember()"
-  class="m-4 md:m-12 p-6 bg-white shadow-md rounded-md space-y-4"
->
-  <h2 class="text-2xl font-bold mb-4">MIEMBROS</h2>
-  <div class="flex flex-col">
-    <label for="name" class="mb-2 font-semibold text-gray-700">Nombre:</label>
-    <input
-      id="name"
-      type="text"
-      formControlName="name"
-      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    />
-    @if(memberForm.get('name')?.invalid && (submitted ||
-    memberForm.get('name')?.touched)){
-    <div class="text-purpleiw text-sm">Este campo es requerido.</div>
-    }
-  </div>
-  <div class="flex flex-col">
-    <label for="title" class="mb-2 font-semibold text-gray-700">Titulo:</label>
-    <textarea
-      id="title"
-      type="text"
-      rows="2"
-      formControlName="title"
-      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    ></textarea>
-    @if(memberForm.get('title')?.invalid && (submitted ||
-    memberForm.get('title')?.touched)){
-    <div class="text-purpleiw text-sm">Este campo es requerido.</div>
-    }
-  </div>
-  <div class="flex flex-col">
-    <label>Categoría:</label>
-    <app-multi-select formControlName="category"></app-multi-select>
-  </div>
-  <div class="flex flex-col">
-    <label for="linkedin" class="mb-2 font-semibold text-gray-700"
-      >Linkedin:</label
-    >
-    <input
-      id="linkedin"
-      type="text"
-      formControlName="linkedin"
-      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    />
-  </div>
-  <div class="flex flex-col">
-    <label for="avatar" class="mb-2 font-semibold text-gray-700">Avatar:</label>
-    <input
-      id="avatar"
-      type="file"
-      (change)="onFileSelected($event)"
-      accept="image/jpeg, image/png, image/jpg"
-      formControlName="avatar"
-      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    />
-  </div>
-  <div class="flex flex-col">
-    <label for="role" class="mb-2 font-semibold text-gray-700">Rol:</label>
-    <select
-      id="role"
-      formControlName="role"
-      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    >
-      <option value="socias">Socias</option>
-      <option value="autoridades">Autoridades</option>
-    </select>
-    @if(memberForm.get('role')?.invalid && (submitted ||
-    memberForm.get('role')?.touched)){
-    <div class="text-purpleiw text-sm">Este campo es requerido.</div>
-    }
-  </div>
-  <div class="flex justify-end">
-    @if (creating) {
-    <div>Creando...</div>
-    } @if (!creating) { @if(memberForm.invalid && submitted) {
-    <div class="text-purpleiw text-sm">
-      Por favor rellenar los campos necesarios.
+<div class="flex justify-center">
+  <form
+    action=""
+    [formGroup]="memberForm"
+    (ngSubmit)="onSubmitMember()"
+    class="m-4 md:m-12 p-6 bg-white shadow-md rounded-md space-y-4 lg:w-1/2"
+  >
+    <h2 class="text-2xl font-bold mb-4">MIEMBRO</h2>
+    <div class="flex flex-col">
+      <label for="name" class="mb-2 font-semibold text-gray-700">Nombre:</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      />
+      @if(memberForm.get('name')?.invalid && (submitted ||
+      memberForm.get('name')?.touched)){
+      <div class="text-purpleiw text-sm">Este campo es requerido.</div>
+      }
     </div>
-    }
-    <button type="submit" [disabled]="creating" class="btn-primary-light">
-      Crear Miembro</button
-    >}
-  </div>
-</form>
+    <div class="flex flex-col">
+      <label for="title" class="mb-2 font-semibold text-gray-700"
+        >Titulo:</label
+      >
+      <textarea
+        id="title"
+        type="text"
+        rows="2"
+        formControlName="title"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      ></textarea>
+      @if(memberForm.get('title')?.invalid && (submitted ||
+      memberForm.get('title')?.touched)){
+      <div class="text-purpleiw text-sm">Este campo es requerido.</div>
+      }
+    </div>
+    <div class="flex flex-col">
+      <label>Categoría:</label>
+      <app-multi-select formControlName="category"></app-multi-select>
+    </div>
+    <div class="flex flex-col">
+      <label for="linkedin" class="mb-2 font-semibold text-gray-700"
+        >Linkedin:</label
+      >
+      <input
+        id="linkedin"
+        type="text"
+        formControlName="linkedin"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      />
+    </div>
+    <div class="flex flex-col">
+      <label for="avatar" class="mb-2 font-semibold text-gray-700"
+        >Avatar:</label
+      >
+      <input
+        id="avatar"
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/jpeg, image/png, image/jpg"
+        formControlName="avatar"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      />
+    </div>
+    <div class="flex flex-col">
+      <label for="role" class="mb-2 font-semibold text-gray-700">Rol:</label>
+      <select
+        id="role"
+        formControlName="role"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      >
+        <option value="socias">Socias</option>
+        <option value="autoridades">Autoridades</option>
+      </select>
+      @if(memberForm.get('role')?.invalid && (submitted ||
+      memberForm.get('role')?.touched)){
+      <div class="text-purpleiw text-sm">Este campo es requerido.</div>
+      }
+    </div>
+    <div class="flex justify-end">
+      @if (creating) {
+      <div>Creando...</div>
+      } @if (!creating) { @if(memberForm.invalid && submitted) {
+      <div class="text-purpleiw text-sm">
+        Por favor rellenar los campos necesarios.
+      </div>
+      }
+      <button type="submit" [disabled]="creating" class="btn-primary-light">
+        Crear Miembro</button
+      >}
+    </div>
+  </form>
+</div>
 
 }
 
 <!-- EVENTOS FORM -->
 @if (mode) {
-<form
-  action=""
-  [formGroup]="eventForm"
-  (ngSubmit)="onSubmitEvent()"
-  class="m-4 md:m-12 p-6 bg-white shadow-lg rounded-md space-y-4"
->
-  <h2 class="text-2xl font-bold mb-4">EVENTOS</h2>
-  <div class="flex flex-col">
-    <label for="category" class="mb-2 font-semibold">Categoría:</label>
-    <select
-      id="category"
-      formControlName="category"
-      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    >
-      <option value="trayectoria">Trayectoria</option>
-      <option value="noticias">Noticias</option>
-      <option value="actividades">Actividades</option>
-    </select>
-    @if(eventForm.get('category')?.invalid && (submitted ||
-    eventForm.get('category')?.touched)){
-    <div class="text-purpleiw text-sm">Categoría es requerida.</div>
-    }
-  </div>
-  <div class="flex flex-col">
-    <label for="title" class="mb-2 font-semibold">Título:</label>
-    <input
-      id="title"
-      type="text"
-      formControlName="title"
-      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    />
-    @if(eventForm.get('title')?.invalid && (submitted ||
-    eventForm.get('title')?.touched)){
-    <div class="text-purpleiw text-sm">Título es requerido.</div>
-    }
-  </div>
-  <div class="flex flex-col">
-    <label for="subtitle" class="mb-2 font-semibold">Subtítulo:</label>
-    <input
-      id="subtitle"
-      type="text"
-      formControlName="subtitle"
-      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    />
-  </div>
-  <div class="flex flex-col">
-    <label for="picture" class="mb-2 font-semibold">Imágen:</label>
-    <input
-      id="picture"
-      type="file"
-      (change)="onEventFileSelected($event)"
-      accept="image/jpeg, image/png, image/jpg"
-      formControlName="picture"
-      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    />
-  </div>
-  <div class="flex flex-col">
-    <label for="date" class="mb-2 font-semibold">Año:</label>
-    <input
-      id="date"
-      type="date"
-      formControlName="date"
-      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
-    />
-    @if(eventForm.get('date')?.invalid && (submitted ||
-    eventForm.get('date')?.touched)){
-    <div class="text-purpleiw text-sm">Categoría es requerida.</div>
-    }
-  </div>
-
-  <div class="ckeditor-container">
-    <label for="description" class="mb-2 font-semibold">Descripción:</label>
-    <quill-editor formControlName="description"></quill-editor>
-  </div>
-
-  <div class="flex justify-end">
-    @if (creating) {
-    <div>Creando...</div>
-    } @else { @if(eventForm.invalid && submitted) {
-    <div class="text-purpleiw text-sm">
-      Por favor rellenar los campos necesarios.
+<div class="flex justify-center">
+  <form
+    action=""
+    [formGroup]="eventForm"
+    (ngSubmit)="onSubmitEvent()"
+    class="m-4 md:m-12 p-6 bg-white shadow-lg rounded-md space-y-4 lg:w-1/2"
+  >
+    <h2 class="text-2xl font-bold mb-4">EVENTO</h2>
+    <div class="flex flex-col">
+      <label for="category" class="mb-2 font-semibold">Categoría:</label>
+      <select
+        id="category"
+        formControlName="category"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      >
+        <option value="trayectoria">Trayectoria</option>
+        <option value="noticias">Noticias</option>
+        <option value="actividades">Actividades</option>
+      </select>
+      @if(eventForm.get('category')?.invalid && (submitted ||
+      eventForm.get('category')?.touched)){
+      <div class="text-purpleiw text-sm">Categoría es requerida.</div>
+      }
     </div>
-    }
+    <div class="flex flex-col">
+      <label for="title" class="mb-2 font-semibold">Título:</label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      />
+      @if(eventForm.get('title')?.invalid && (submitted ||
+      eventForm.get('title')?.touched)){
+      <div class="text-purpleiw text-sm">Título es requerido.</div>
+      }
+    </div>
+    <div class="flex flex-col">
+      <label for="subtitle" class="mb-2 font-semibold">Subtítulo:</label>
+      <input
+        id="subtitle"
+        type="text"
+        formControlName="subtitle"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      />
+    </div>
+    <div class="flex flex-col">
+      <label for="picture" class="mb-2 font-semibold">Imágen:</label>
+      <input
+        id="picture"
+        type="file"
+        (change)="onEventFileSelected($event)"
+        accept="image/jpeg, image/png, image/jpg"
+        formControlName="picture"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      />
+    </div>
+    <div class="flex flex-col">
+      <label for="date" class="mb-2 font-semibold">Año:</label>
+      <input
+        id="date"
+        type="date"
+        formControlName="date"
+        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orangeiw"
+      />
+      @if(eventForm.get('date')?.invalid && (submitted ||
+      eventForm.get('date')?.touched)){
+      <div class="text-purpleiw text-sm">Categoría es requerida.</div>
+      }
+    </div>
 
-    <button
-      type="submit"
-      (ngSubmit)="onSubmitEvent()"
-      class="btn-primary-light"
-    >
-      Crear Evento</button
-    >}
-  </div>
-</form>
+    <div>
+      <label for="description" class="mb-2 font-semibold">Descripción:</label>
+      <quill-editor formControlName="description"></quill-editor>
+    </div>
+
+    <div class="flex justify-end">
+      @if (creating) {
+      <div>Creando...</div>
+      } @else { @if(eventForm.invalid && submitted) {
+      <div class="text-purpleiw text-sm">
+        Por favor rellenar los campos necesarios.
+      </div>
+      }
+
+      <button
+        type="submit"
+        (ngSubmit)="onSubmitEvent()"
+        class="btn-primary-light"
+      >
+        Crear Evento</button
+      >}
+    </div>
+  </form>
+</div>
+
 }
 
 <app-success

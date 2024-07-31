@@ -12,6 +12,12 @@ import { UpdateEventComponent } from './components/dashboard/update-event/update
 import { EventoComponent } from './pages/evento/evento.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SociasComponent } from './pages/socias/socias.component';
+import { MessagesComponent } from './components/dashboard/messages/messages.component';
+import { MembersComponent } from './components/dashboard/members/members.component';
+import { ActividadesDbComponent } from './components/dashboard/actividades-db/actividades-db.component';
+import { NoticiasDbComponent } from './components/dashboard/noticias-db/noticias-db.component';
+import { TrayectoriaDbComponent } from './components/dashboard/trayectoria-db/trayectoria-db.component';
+import { CreateComponent } from './components/dashboard/create/create.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,10 +29,19 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
+    children: [
+      { path: '', component: MembersComponent },
+      { path: 'messages', component: MessagesComponent },
+      { path: 'members', component: MembersComponent },
+      { path: 'actividades', component: ActividadesDbComponent },
+      { path: 'noticias', component: NoticiasDbComponent },
+      { path: 'trayectoria', component: TrayectoriaDbComponent },
+      { path: 'create', component: CreateComponent },
+      { path: 'member/:id', component: UpdateMemberComponent },
+      { path: 'event/:id', component: UpdateEventComponent },
+    ],
   },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard/member/:id', component: UpdateMemberComponent },
-  { path: 'dashboard/event/:id', component: UpdateEventComponent },
   { path: 'evento/:id', component: EventoComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'socias', component: SociasComponent },

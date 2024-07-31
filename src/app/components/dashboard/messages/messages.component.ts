@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SupabaseService } from '../../../services/auth.service';
 import { Contact } from '../../../interface';
 import { CommonModule } from '@angular/common';
@@ -8,15 +8,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './messages.component.html',
-  styleUrl: './messages.component.css',
+  styleUrls: ['./messages.component.css'],
 })
 export class MessagesComponent {
-  @Input()
   contacts: Contact[] = [];
-  @Input()
   totalContacts: number | null = 0;
-  @Output()
-  offsetChange = new EventEmitter<number>();
 
   currentPage = 0;
   pageSize = 10;
@@ -40,22 +36,28 @@ export class MessagesComponent {
 
   constructor(private supabaseService: SupabaseService) {}
 
+  async ngOnInit() {
+    this.totalContacts = await this.supabaseService.getTotalCount();
+    this.loadContacts();
+  }
+
+  async loadContacts() {
+    const offset = this.currentPage * this.pageSize;
+    this.contacts = await this.supabaseService.getContacts(offset);
+  }
+
   nextPage() {
     if ((this.currentPage + 1) * this.pageSize < this.totalContacts!) {
       this.currentPage++;
-      this.emitOffset();
+      this.loadContacts();
     }
   }
 
   prevPage() {
     if (this.currentPage > 0) {
       this.currentPage--;
-      this.emitOffset();
+      this.loadContacts();
     }
-  }
-
-  emitOffset() {
-    this.offsetChange.emit(this.currentPage * this.pageSize);
   }
 
   async onRead(id: string | undefined) {

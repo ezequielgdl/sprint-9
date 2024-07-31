@@ -11,37 +11,29 @@
   >
     <button
       class="text-sm hover:underline hover:text-orangeiw focus:outline-none"
-      [ngClass]="{
-        'font-semibold underline text-orangeiw': status === 'members'
-      }"
-      (click)="onStatusChange('members')"
+      routerLink="members"
+      routerLinkActive="active"
     >
       Miembros
     </button>
     <button
       class="text-sm hover:underline hover:text-orangeiw focus:outline-none"
-      [ngClass]="{
-        'font-semibold underline text-orangeiw': status === 'actividades'
-      }"
-      (click)="onStatusChange('actividades')"
+      routerLink="actividades"
+      routerLinkActive="active"
     >
       Actividades
     </button>
     <button
       class="text-sm hover:underline hover:text-orangeiw focus:outline-none"
-      [ngClass]="{
-        'font-semibold underline text-orangeiw': status === 'noticias'
-      }"
-      (click)="onStatusChange('noticias')"
+      routerLink="noticias"
+      routerLinkActive="active"
     >
       Noticias
     </button>
     <button
       class="text-sm hover:underline hover:text-orangeiw focus:outline-none"
-      [ngClass]="{
-        'font-semibold underline text-orangeiw': status === 'trayectoria'
-      }"
-      (click)="onStatusChange('trayectoria')"
+      routerLink="trayectoria"
+      routerLinkActive="active"
     >
       Trayectoria
     </button>
@@ -51,10 +43,8 @@
   >
     <button
       class="flex items-center space-x-1 text-sm hover:underline hover:text-orangeiw focus:outline-none"
-      [ngClass]="{
-        'font-semibold underline text-orangeiw': status === 'messages'
-      }"
-      (click)="onStatusChange('messages')"
+      routerLink="messages"
+      routerLinkActive="active"
     >
       <span>Mensajes</span>
       <i class="bi bi-envelope"></i>
@@ -62,10 +52,7 @@
 
     <button
       class="flex items-center space-x-1 text-sm hover:underline hover:text-orangeiw focus:outline-none"
-      [ngClass]="{
-        'font-semibold underline text-orangeiw': status === 'create'
-      }"
-      (click)="onStatusChange('create')"
+      routerLink="create"
     >
       <span>Crear</span>
       <i class="bi bi-plus-circle-fill"></i>
@@ -79,27 +66,4 @@
   </div>
 </nav>
 
-@if (status === 'members') {<app-members [members]="members"></app-members>} @if
-(status === 'trayectoria') {<app-events-db
-  [category]="status"
-  [events]="trayectoria"
-></app-events-db
->} @if (status === 'noticias') {<app-events-db
-  [events]="noticias"
-  [category]="status"
-></app-events-db
->} @if (status === 'actividades') {<app-events-db
-  [events]="actividades"
-  [category]="status"
-></app-events-db
->} @if (status === 'create') {<app-create
-  (memberCreated)="onMemberCreated()"
-  (eventCreated)="onEventCreated()"
-></app-create>
-} @if (status === 'messages') {
-<app-messages
-  [contacts]="contacts"
-  [totalContacts]="totalContacts"
-  (offsetChange)="onOffsetChange($event)"
-></app-messages>
-}
+<router-outlet></router-outlet>

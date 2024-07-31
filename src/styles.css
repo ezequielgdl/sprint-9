@@ -30,23 +30,3 @@ body {
 .hover-underline {
   @apply hover:decoration-orangeiw hover:underline hover:underline-offset-4;
 }
-
-.ckeditor-container .ck-editor__editable {
-  font-size: 1rem; /* Ensure text size */
-  min-height: 400px; /* Ensure minimum height */
-  width: 100%; /* Ensure full width */
-  box-sizing: border-box; /* Ensure box-sizing is consistent */
-}
-
-.ckeditor-container .ck-toolbar {
-  display: flex;
-  flex-wrap: wrap; /* Ensure toolbar items wrap correctly */
-}
-
-.ckeditor-container .ck-button {
-  font-size: 0.875rem; /* Adjust button size */
-}
-
-.ckeditor-container .ck-button__label {
-  font-size: 0.75rem; /* Adjust button label size */
-}
