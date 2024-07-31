@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { SupabaseService } from './services/auth.service';
-import { User } from '@supabase/supabase-js'; // Adjust the import as per Supabase documentation
+import { User } from '@supabase/supabase-js';
 
 @Injectable({
   providedIn: 'root',

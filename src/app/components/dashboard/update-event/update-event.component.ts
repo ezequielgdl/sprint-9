@@ -9,35 +9,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SupabaseService } from '../../../services/auth.service';
 import { SuccessComponent } from '../success/success.component';
 import { Evento } from '../../../interface';
-import {
-  ClassicEditor,
-  AccessibilityHelp,
-  AutoImage,
-  Autosave,
-  Bold,
-  Essentials,
-  GeneralHtmlSupport,
-  ImageBlock,
-  ImageInsertViaUrl,
-  ImageToolbar,
-  Italic,
-  Link,
-  List,
-  Paragraph,
-  SelectAll,
-  Underline,
-  Undo,
-  EditorConfig,
-  FontColor,
-} from 'ckeditor5';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-
-import 'ckeditor5/ckeditor5.css';
+import { QuillModule } from 'ngx-quill';
 
 @Component({
   selector: 'app-update-event',
   standalone: true,
-  imports: [ReactiveFormsModule, SuccessComponent, CKEditorModule],
+  imports: [ReactiveFormsModule, SuccessComponent, QuillModule],
   templateUrl: './update-event.component.html',
   styleUrl: './update-event.component.css',
 })
@@ -53,78 +30,6 @@ export class UpdateEventComponent {
   data: any | null = null;
   selectedFile: File | null = null;
   updating: boolean = false;
-
-  public Editor = ClassicEditor;
-  public editorConfig: EditorConfig = {
-    toolbar: {
-      items: [
-        'undo',
-        'redo',
-        '|',
-        'selectAll',
-        '|',
-        'fontColor',
-        '|',
-        'bold',
-        'italic',
-        'underline',
-        '|',
-        'link',
-        'insertImageViaUrl',
-        '|',
-        'bulletedList',
-        'numberedList',
-        '|',
-        'accessibilityHelp',
-      ],
-      shouldNotGroupWhenFull: false,
-    },
-    plugins: [
-      AccessibilityHelp,
-      AutoImage,
-      Autosave,
-      Bold,
-      Essentials,
-      FontColor,
-      GeneralHtmlSupport,
-      ImageBlock,
-      ImageInsertViaUrl,
-      ImageToolbar,
-      Italic,
-      Link,
-      List,
-      Paragraph,
-      SelectAll,
-      Underline,
-      Undo,
-    ],
-    htmlSupport: {
-      allow: [
-        {
-          name: /^.*$/,
-          styles: true,
-          attributes: true,
-          classes: true,
-        },
-      ],
-    },
-    image: {
-      toolbar: ['imageTextAlternative'],
-    },
-    link: {
-      addTargetToExternalLinks: true,
-      defaultProtocol: 'https://',
-      decorators: {
-        toggleDownloadable: {
-          mode: 'manual',
-          label: 'Downloadable',
-          attributes: {
-            download: 'file',
-          },
-        },
-      },
-    },
-  };
 
   eventForm = new FormGroup({
     title: new FormControl('', Validators.required),

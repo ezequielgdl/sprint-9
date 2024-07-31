@@ -86,12 +86,7 @@
       <label for="description" class="mb-2 font-semibold text-gray-700"
         >Descripción:</label
       >
-      <ckeditor
-        formControlName="description"
-        [editor]="Editor"
-        [config]="editorConfig"
-        tagName="textarea"
-      ></ckeditor>
+      <quill-editor formControlName="description"></quill-editor>
 
       @if(eventForm.get('description')?.invalid &&
       (eventForm.get('description')?.dirty ||

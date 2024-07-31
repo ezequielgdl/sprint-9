@@ -9,31 +9,8 @@ import { SupabaseService } from '../../../services/auth.service';
 import { Member, Evento } from '../../../interface';
 import { SuccessComponent } from '../success/success.component';
 import { CommonModule } from '@angular/common';
-import {
-  ClassicEditor,
-  AccessibilityHelp,
-  AutoImage,
-  Autosave,
-  Bold,
-  Essentials,
-  FontColor,
-  GeneralHtmlSupport,
-  ImageBlock,
-  ImageInsertViaUrl,
-  ImageToolbar,
-  Italic,
-  Link,
-  List,
-  Paragraph,
-  SelectAll,
-  Underline,
-  Undo,
-  EditorConfig,
-} from 'ckeditor5';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-
-import 'ckeditor5/ckeditor5.css';
 import { MultiSelectComponent } from '../multiselect/multiselect.component';
+import { QuillModule } from 'ngx-quill';
 
 @Component({
   selector: 'app-create',
@@ -42,8 +19,8 @@ import { MultiSelectComponent } from '../multiselect/multiselect.component';
     ReactiveFormsModule,
     SuccessComponent,
     CommonModule,
-    CKEditorModule,
     MultiSelectComponent,
+    QuillModule,
   ],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css',
@@ -59,78 +36,6 @@ export class CreateComponent {
   creating: boolean = false;
   submitted: boolean = false;
   mode: boolean = true;
-
-  public Editor = ClassicEditor;
-  public editorConfig: EditorConfig = {
-    toolbar: {
-      items: [
-        'undo',
-        'redo',
-        '|',
-        'selectAll',
-        '|',
-        'fontColor',
-        '|',
-        'bold',
-        'italic',
-        'underline',
-        '|',
-        'link',
-        'insertImageViaUrl',
-        '|',
-        'bulletedList',
-        'numberedList',
-        '|',
-        'accessibilityHelp',
-      ],
-      shouldNotGroupWhenFull: false,
-    },
-    plugins: [
-      AccessibilityHelp,
-      AutoImage,
-      Autosave,
-      Bold,
-      Essentials,
-      FontColor,
-      GeneralHtmlSupport,
-      ImageBlock,
-      ImageInsertViaUrl,
-      ImageToolbar,
-      Italic,
-      Link,
-      List,
-      Paragraph,
-      SelectAll,
-      Underline,
-      Undo,
-    ],
-    htmlSupport: {
-      allow: [
-        {
-          name: /^.*$/,
-          styles: true,
-          attributes: true,
-          classes: true,
-        },
-      ],
-    },
-    image: {
-      toolbar: ['imageTextAlternative'],
-    },
-    link: {
-      addTargetToExternalLinks: true,
-      defaultProtocol: 'https://',
-      decorators: {
-        toggleDownloadable: {
-          mode: 'manual',
-          label: 'Downloadable',
-          attributes: {
-            download: 'file',
-          },
-        },
-      },
-    },
-  };
 
   eventForm = new FormGroup({
     title: new FormControl('', Validators.required),
