@@ -1,27 +1,58 @@
-# Iwforum
+# Proyecto del Foro Internacional de Mujeres en Argentina
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
+## Descripción
 
-## Development server
+Este proyecto tiene como objetivo mostrar la presencia del Foro Internacional de Mujeres (International Women's Forum) en Argentina y proporcionar un panel personal que solo puede ser accedido mediante autenticación manejada por Supabase. Los usuarios autenticados podrán cambiar dinámicamente el contenido de las secciones de Noticias, Actividades, Trayectoria y Miembros.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tecnologías Utilizadas
 
-## Code scaffolding
+- Angular 18: Framework de desarrollo para construir aplicaciones web.
+- TailwindCSS: Framework de CSS para diseñar interfaces de usuario rápidas y modernas.
+- Supabase: Plataforma de backend como servicio que proporciona autenticación, almacenamiento y base de datos en tiempo real.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Requisitos Previos
 
-## Build
+Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node.js (versión 14 o superior)
+- npm (gestor de paquetes de Node.js)
 
-## Running unit tests
+## Instalación
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Clonar el repositorio:
 
-## Running end-to-end tests
+```bash
+git clone https://github.com/tu-usuario/tu-repositorio.git
+cd tu-repositorio
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Instalar las dependencias:
 
-## Further help
+```bash
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Ejecutar la aplicación:
+
+```bash
+npm start
+La aplicación estará disponible en http://localhost:4200.
+```
+
+## Uso
+
+Autenticación
+Los usuarios deben autenticarse para acceder al panel personal. La autenticación se maneja a través de Supabase, utilizando el método de correo electrónico y contraseña.
+
+## Contenido Dinámico
+
+Las siguientes secciones pueden ser actualizadas dinámicamente por los usuarios autenticados:
+
+Noticias: Publica y actualiza noticias relacionadas con el foro.
+Actividades: Gestiona las actividades y eventos del foro.
+Trayectoria: Muestra la trayectoria y logros del foro.
+Miembros: Administra la lista de miembros del foro.
+
+## Licencia
+
+Todos los derechos reservados IWF Argentina.
