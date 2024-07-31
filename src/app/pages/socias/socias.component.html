@@ -2,12 +2,6 @@
   <h1 class="text-center m-6 font-semibold text-xl md:text-3xl text-orangeiw">
     SOCIAS
   </h1>
-  <!-- <input
-    class="lg:w-1/2 w-2/3 mb-12 p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-    type="text"
-    placeholder="Buscar por categoría..."
-    [(ngModel)]="searchTerm"
-  /> -->
   <app-multi-select class="w-2/3" [(ngModel)]="searchTerm"></app-multi-select>
 </div>
 
@@ -21,7 +15,7 @@
       @if (member.avatar) {
       <img [ngSrc]="member.avatar" width="400" height="400" alt="" />
       }
-      <h6 class="text-lg font-semibold mb-1">
+      <h6 class="text-lg font-semibold mb-1 flex gap-2">
         {{ member.name }} @if (member.linkedin) {
         <a [href]="member.linkedin" target="_blank" class="hover:text-orangeiw">
           <span class="sr-only">LinkedIn</span>
@@ -36,10 +30,10 @@
         {{ member.title }}
       </p>
     </div>
-    <div class="flex flex-col space-y-2 mt-2">
+    <div class="mt-2">
       @for (category of member.category; track $index) {
       <span
-        class="bg-orangeiw text-sm text-whiteiw rounded-full py-1 text-center"
+        class="bg-lightorangeiw text-sm rounded-full py-1 text-center px-2 m-1"
         >{{ category }}</span
       >
       }
